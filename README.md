@@ -1,7 +1,7 @@
 # Hi there! 👋 I'm Kaushal Rathour with a deep passion for web development.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-kaushalrathour-blue)](https://www.linkedin.com/in/kaushalrathour)
-[![Instagram](https://img.shields.io/badge/Instagram-kaushalrathour__-purple)](https://www.instagram.com/kaushalrathour)
+[![Instagram](https://img.shields.io/badge/Instagram-kaushalrathour__-purple)](https://www.instagram.com/kaushalrathour_)
 [![Github](https://img.shields.io/badge/Github-kaushalrathour-black)](https://github.com/kaushalrathour)
 
 
