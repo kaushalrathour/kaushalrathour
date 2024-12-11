@@ -22,7 +22,7 @@ Node.js, Express.js, Passport.js, JavaScript, MongoDB, Bootstrap, CSS, EJS
 ---
 
 ### **Real-Time Chat Application**  
-[Demo](https://real-time-chat-frontend.vercel.app/) | [Source Code](https://github.com/kaushalrathour/Real-Time-Chat-App)  
+[Demo](https://real-time-chat-app-git-main-kaushal-rathours-projects-b9acca1e.vercel.app/) | [Source Code](https://github.com/kaushalrathour/Real-Time-Chat-App)  
 - Designed a real-time chat application to facilitate seamless communication among users.  
 - Implemented WebSocket protocol for instantaneous and secure bidirectional messaging.  
 - Enhanced user experience with intuitive chat functionalities for one-on-one and group interactions.  
