@@ -1,4 +1,4 @@
-# Hi there! I'm Kaushal Rathour  
+# Hi there! I'm Kaushal  
 ### A Mobile App and Full Stack Developer with a deep passion for web and mobile development.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-kaushalrathour-blue)](https://www.linkedin.com/in/kaushalrathour)  
