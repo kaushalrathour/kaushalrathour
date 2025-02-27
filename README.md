@@ -1,5 +1,4 @@
-# Hi there! I'm Kaushal  
-### A Mobile App and Full Stack Developer with a deep passion for web and mobile development.
+# Trust Me, I Can Fix I.T. 
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-kaushalrathour-blue)](https://www.linkedin.com/in/kaushalrathour)  
 [![Instagram](https://img.shields.io/badge/Instagram-kaushalrathour__-purple)](https://www.instagram.com/kaushalrathour_)  
