@@ -1,46 +1,102 @@
-# Trust Me, I Can Fix I.T. 
+<!-- Profile Header -->
+<h1 align="center">Hi, I'm Kaushal Rathour 👋</h1>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-kaushalrathour-blue)](https://www.linkedin.com/in/kaushalrathour)  
-[![Instagram](https://img.shields.io/badge/Instagram-kaushalrathour__-purple)](https://www.instagram.com/kaushalrathour_)  
-[![Github](https://img.shields.io/badge/Github-kaushalrathour-black)](https://github.com/kaushalrathour)  
+<p align="center">
+  <b>React Native Mobile App Developer • CI/CD • App Security • Performance Optimization</b><br/>
+  📍 Noida, India
+</p>
 
----
-
-## 💻 MAJOR PROJECTS  
-
-### **Hostellers - Student Accommodation Platform**  
-[Demo](https://hostellers.onrender.com) | [Source Code](https://github.com/kaushalrathour/Hostellers)  
-- Developed a student accommodation platform, transforming housing search to boost user engagement.  
-- Provided detailed facility information, owner details, address, and contact for hostels.  
-- Implemented a flexible system allowing businesses to list, update and delete their accommodations.  
-- Implemented personalized and relevant search options for better user experience.  
-
-**Technologies Used:**  
-Node.js, Express.js, Passport.js, JavaScript, MongoDB, Bootstrap, CSS, EJS  
+<p align="center">
+  <a href="https://linkedin.com/in/kaushalrathour">LinkedIn</a> •
+  <a href="https://github.com/kaushalrathour">GitHub</a> •
+  <a href="mailto:kaushal.codes@gmail.com">Email</a> •
+  <a href="https://leetcode.com/u/kaushalrathour">LeetCode</a>
+</p>
 
 ---
 
-### **Real-Time Chat Application**  
-[Demo](https://real-time-chat-app-git-main-kaushal-rathours-projects-b9acca1e.vercel.app/) | [Source Code](https://github.com/kaushalrathour/Real-Time-Chat-App)  
-- Designed a real-time chat application to facilitate seamless communication among users.  
-- Implemented WebSocket protocol for instantaneous and secure bidirectional messaging.  
-- Enhanced user experience with intuitive chat functionalities for one-on-one and group interactions.  
+## 🚀 About Me
 
-**Technologies Used:**  
-Node.js, React.js, Express.js, Socket.io, JavaScript, MongoDB, CSS  
+Results-driven **Mobile App Developer specializing in React Native** with experience delivering **4+ production-grade applications** across iOS & Android.
 
----
+I care about:
 
-## ⚙️ SKILLS  
+✔️ Production-ready engineering  
+✔️ CI/CD automation & OTA delivery  
+✔️ App security & reliability  
+✔️ Modular architectures  
+✔️ Performance optimization  
 
-- **Backend Technologies:** Node.js, Express.js, Socket.io, RESTful APIs, Passport.js, Firebase Authentication  
-- **Frontend Technologies:** React.js, React Native, Redux Toolkit, Bootstrap, CSS, HTML  
-- **Databases:** MongoDB, MySQL, Oracle, Firebase (Firestore, Realtime Database)  
-- **Hosting & Deployment:** Vercel, Render, Firebase Hosting  
-- **Version Control:** Git, GitHub  
-- **API Testing:** Postman, Hoppscotch  
-- **Languages:** JavaScript, TypeScript, Java  
+💡 I focus on building **stable, scalable, maintainable apps — not just prototypes.**
 
 ---
 
-Thanks for visiting! Feel free to connect with me! 😄  
+## 💼 Professional Experience
+
+### 🟦 React Native Developer — Seventh Triangle Pvt. Ltd.
+📆 Mar 2025 – Present | 📍 Noida, India  
+
+#### 🏆 Sports Management & Coaching Ecosystem (3 Apps)
+- Architected **Athlete, Coach & Academy apps** with full **RBAC**
+- Built **Fastlane + CodePush CI/CD pipelines**
+- Integrated **secure booking & payments**
+- Designed a **scalable modular UI system**
+
+#### 🛒 Hyper-Local Community Marketplace
+- Converted **web platform → mobile app**
+- Built **custom JS overrides** for native-like UX
+- Integrated **Firebase Analytics & Crashlytics**
+- Achieved **99.9% crash-free rate**
+
+#### 🏬 Enterprise Retail & Shopify
+- Built mobile retail experiences via **Appmaker.xyz**
+- Developed **custom React Native blocks**
+- Improved checkout & auth reliability
+- Optimized rendering using **FlashList & caching**
+
+---
+
+### 🟨 React Native Developer Intern — Tech Instance
+📆 Aug 2024 – Nov 2024 | 🌍 Remote  
+
+- Developed **Consumer & Partner food-delivery apps**
+- Integrated **Firebase Auth + REST APIs**
+- Designed **order management workflows**
+- Improved backend performance **by ~20%**
+
+---
+
+## 🛠 Tech Stack
+
+### 📱 Mobile
+React Native (CLI & Expo) • TypeScript • Redux Toolkit • Modular Architecture
+
+### 🏪 Hybrid & Shopify
+Appmaker.xyz • WebView Bridges • WebToNative • Custom RN Blocks
+
+### 🚀 DevOps
+Fastlane • GitHub Actions • CodePush (OTA) • Play Integrity API
+
+### 📊 Performance & Monitoring
+Firebase Analytics • Crashlytics • FlashList • Flipper • Profiling
+
+### ☁ Backend
+Node.js • Express.js • Firebase • MongoDB • REST APIs
+
+### 🔧 Tools
+Git • Postman • Xcode • Android Studio • VSCode
+
+---
+
+## 🎓 Education
+**Bachelor of Computer Applications**  
+Integral University — Lucknow, India  
+📅 Sep 2022 – May 2025  
+
+---
+
+## 🤝 Let’s Connect
+💬 Open to collaboration & product-focused engineering
+
+📧 **kaushal.codes@gmail.com**  
+🔗 **linkedin.com/in/kaushalrathour**
