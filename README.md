@@ -27,8 +27,6 @@ I care about:
 ✔️ Modular architectures  
 ✔️ Performance optimization  
 
-💡 I focus on building **stable, scalable, maintainable apps — not just prototypes.**
-
 ---
 
 ## 💼 Professional Experience
