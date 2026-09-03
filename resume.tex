@@ -1,0 +1,299 @@
+\documentclass[a4paper,11pt]{article}
+
+% Package imports
+\usepackage{latexsym}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage[empty]{fullpage}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{cfr-lm}
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}
+
+% Consistent list spacing
+% Level 1: section-level bullets (e.g., Skills items)
+\setlist[itemize]{leftmargin=*, topsep=3pt, itemsep=3pt, parsep=0pt}
+% Level 2: nested bullets (e.g., projects inside an org)
+\setlist[itemize,2]{leftmargin=4mm, topsep=2pt, itemsep=2pt, parsep=0pt}
+\renewcommand{\labelitemi}{\textbullet}
+
+% Color definitions
+\definecolor{darkblue}{RGB}{0,0,139}
+
+% Page layout
+\setlength{\multicolsep}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\geometry{
+    left=0.7cm,
+    top=0.6cm,
+    right=0.7cm,
+    bottom=0.5cm
+}
+
+\setlength{\footskip}{4pt}
+
+% Hyperlink setup
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkblue,
+    filecolor=darkblue,
+    urlcolor=darkblue,
+}
+
+% Formatting
+\urlstyle{same}
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+\begin{document}
+
+% Header
+\begin{center}
+    {\Huge \textbf{Kaushal Kumar}} \\
+    \vspace{2mm}
+
+    \small
+    Noida, India |
+    \href{tel:+917499999362}{+91 7499999362} |
+    \href{mailto:kaushal.codes@gmail.com}{kaushal.codes@gmail.com} \\
+
+    \href{https://linkedin.com/in/kaushalrathour}{LinkedIn} |
+    \href{https://github.com/kaushalrathour}{GitHub} |
+    \href{https://www.npmjs.com/~kaushalrathour}{NPM} |
+    \href{https://linktr.ee/kaushalrathour}{Portfolio}
+
+\end{center}
+
+\vspace{-4mm}
+
+% Summary
+\section*{Summary}
+
+\justifying
+\textbf{Product Engineer} building \textbf{Consumer, D2C \& AI-powered apps} for iOS and Android. Experienced in \textbf{React Native}, AI-powered workflows, subscription monetization, release automation with \textbf{Fastlane}, \textbf{OTA updates}, \textbf{app security}, and \textbf{end-to-end product ownership} from architecture to production.
+
+% Independent Project
+\section*{Independent Project}
+
+\begin{itemize}[leftmargin=*]
+
+\item
+\textbf{Indie Developer - Kash (Offline-first personal finance app)}
+\hfill
+\textit{Apr 2026 – Present}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Designed, developed, and launched Kash on iOS as an offline-first expense tracking application focused on frictionless financial logging and privacy-first architecture.
+
+\item Built a zero-friction Quick Log with natural language parsing and multi-log support (e.g., ``coffee 80 yesterday, movie 299 2 days ago''), reducing expense capture to a single interaction.
+
+\item Architected a local-first data model using SQLite as the source of truth, with balances, analytics, and account summaries derived from transaction history to maintain consistency.
+
+\item Implemented confidence-aware parsing, multi-account management, offline analytics, multi-currency support, and optional cloud synchronization while keeping core functionality fully offline.
+
+\item Managed end-to-end product development including mobile engineering, backend services, App Store release, product website, analytics integration, ASO, and user acquisition experiments.
+
+\end{itemize}
+
+
+\end{itemize}
+
+% Experience
+\section*{Experience}
+
+\begin{itemize}[leftmargin=*]
+
+% HOUSE AI
+
+
+\item
+\textbf{Freelance React Native Developer}
+\hfill
+\textit{Apr 2026}
+
+\textbf{Addicting Elements}
+\hfill
+\textit{Miami, Florida, USA (Remote)}
+
+\begin{itemize}[leftmargin=4mm]
+ 
+\item \textbf{House AI - Interior \& Exterior Design App}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Shipped AI image transformation flows using \textbf{Gemini Flash} and \textbf{Vertex AI}, optimized for mobile performance and responsiveness.
+
+\item Designed end-to-end product journeys: upload \(\rightarrow\) preview \(\rightarrow\) generate \(\rightarrow\) save, with subscription gating and upgrade moments.
+
+\item Improved app stability and perceived speed by tightening API orchestration and UI rendering around AI outputs.
+
+\item Supported a consumer product with \textbf{20K+ downloads}, active paid subscribers, and a \textbf{4.5 rating}.
+
+\end{itemize}
+
+\end{itemize}
+
+\vspace{1mm}
+
+% SEVENTH TRIANGLE
+
+\item
+\textbf{React Native Developer}
+\hfill
+\textit{Mar 2025 – Present}
+
+\textbf{Seventh Triangle Pvt. Ltd.}
+\hfill
+\textit{Noida, India}
+
+\begin{itemize}[leftmargin=4mm]
+ 
+\item \textbf{OWND! - Gen Z Fashion Commerce Platform (Aditya Birla Group)}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Building core commerce journeys and launch-critical mobile integrations for a large consumer platform.
+
+\item Partnering with design and engineering stakeholders to ship reliable flows with strong UX and production readiness.
+
+\end{itemize}
+
+\item \textbf{Jockey India - Mobile Commerce Application}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Built a digital wallet system end-to-end (balance, transactions, redemption) inside a production commerce app.
+
+\item Shipped campaign experiences for brand collaborations (\textbf{Disney}, \textbf{Marvel}) in a Shopify-integrated ecosystem.
+
+\end{itemize}
+
+\item \textbf{KhelCoach - Sports Ecosystem (Athlete, Coach, Academy Apps)}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Delivered 3 role-based apps (athlete/coach/academy) with access control and shared design system components.
+
+\item Automated release pipelines with \textbf{Fastlane} and shipped iterative updates via \textbf{CodePush}.
+
+\item Integrated payments and booking flows for real-time transactions.
+
+\end{itemize}
+
+\item \textbf{Picklebay - Hyperlocal Marketplace}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Owned end-to-end delivery for a WebToNative mobile app, adding native-like interactions via custom JS bridges.
+
+\item Added Firebase Analytics and Crashlytics instrumentation to monitor stability and funnel performance.
+
+\end{itemize}
+
+\end{itemize}
+
+\vspace{1mm}
+
+% TECH INSTANCE
+
+\item
+\textbf{React Native Developer Intern}
+\hfill
+\textit{Aug 2024 – Nov 2024}
+
+\textbf{Tech Instance}
+\hfill
+\textit{Remote}
+
+\begin{itemize}[leftmargin=4mm]
+ 
+\item \textbf{Hunger - Food Delivery Platform}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Built a React Native app from scratch, delivering core flows and reusable API hooks.
+
+\item Integrated Firebase Authentication and improved data structure for better scalability.
+
+\end{itemize}
+
+\end{itemize}
+
+\end{itemize}
+
+% Skills
+\section*{Technical Skills}
+
+\begin{itemize}[leftmargin=*]
+
+\item
+\textbf{Mobile Development:}
+\textit{React Native (CLI \& Expo), TypeScript, Redux Toolkit, Zustand, MMKV}
+
+\item
+\textbf{AI \& Integrations:}
+\textit{Gemini Flash, Vertex AI, AI integrations}
+
+\item
+\textbf{DevOps \& Deployment:}
+\textit{Fastlane, CodePush, GitHub Actions}
+
+\item
+\textbf{Payments \& Monetization:}
+\textit{In-App Purchases, RevenueCat, Razorpay}
+
+\item
+\textbf{Performance \& Analytics:}
+\textit{Firebase Analytics, Crashlytics, Sentry, FlashList Optimization}
+
+\item
+\textbf{Backend \& Cloud:}
+\textit{Node.js, Express.js, Firebase (Firestore, FCM), MongoDB, REST APIs}
+
+\item
+\textbf{Tools:}
+\textit{Git, Postman, Xcode, Android Studio, VSCode}
+
+\end{itemize}
+
+% Education
+\section*{Education}
+
+\begin{itemize}[leftmargin=*]
+
+\item
+\textbf{Bachelor of Computer Applications}
+\hfill
+\textit{Sep 2022 – May 2025}
+
+\textbf{Integral University}
+\hfill
+\textit{Lucknow, India}
+
+\end{itemize}
+
+\end{document}
