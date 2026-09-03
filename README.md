@@ -2,7 +2,7 @@
 
 React Native engineer. I ship consumer and D2C apps for iOS and Android - commerce, wallets, bookings, payments, subscriptions, and release automation.
 
-Day job: production mobile at **Seventh Triangle** (Noida) across multiple D2C and consumer products. On my own I build **[Kash](https://kash.appmatters.in)** under [AppMatters](https://www.appmatters.in) - expense tracking in plain language, offline on your phone.
+At **Seventh Triangle** (Noida) I ship D2C and consumer products. I also build **[Kash](https://kash.appmatters.in)** under [AppMatters](https://www.appmatters.in) - a money companion on iOS and Android.
 
 [LinkedIn](https://linkedin.com/in/kaushalrathour) · [Email](mailto:kaushal.codes@gmail.com) · [AppMatters](https://www.appmatters.in)
 
@@ -18,7 +18,7 @@ Day job: production mobile at **Seventh Triangle** (Noida) across multiple D2C a
 - Fastlane and CodePush for store releases and OTA updates
 - Analytics, crash monitoring, and shared UI across apps
 
-### Freelance React Native - Apex Byte Technologies
+### Freelance React Native - Addicting Elements
 **Apr 2025 · Remote**
 
 - House AI - interior/exterior generation with Gemini Flash / Vertex AI
