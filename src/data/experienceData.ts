@@ -103,7 +103,7 @@ export const experienceData: ExperienceItem[] = [
         ],
       },
       {
-        name: 'Jockey India – Mobile Commerce',
+        name: 'Jockey - Mobile Commerce',
         projectLogo: jockeyLogo,
         website: 'https://jockey.in/',
         bullets: [
@@ -133,11 +133,11 @@ export const experienceData: ExperienceItem[] = [
         ],
       },
       {
-        name: 'Picklebay – Hyperlocal Marketplace',
+        name: 'Picklebay - Pickleball Sports Platform',
         projectLogo: picklebayLogo,
         website: 'https://picklebay.com/',
         bullets: [
-          'Owned end-to-end delivery for a WebToNative app with custom JS bridges.',
+          'Owned end-to-end delivery for a WebToNative pickleball app covering courts, play, and community flows.',
           'Instrumented Firebase Analytics and Crashlytics for stability and funnel monitoring.',
         ],
         integrations: [

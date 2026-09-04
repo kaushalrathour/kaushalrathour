@@ -1,7 +1,12 @@
-import { ExternalLink } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { ArrowUpRight } from 'lucide-react'
+import { AnimatePresence, motion } from 'motion/react'
 import { projectsData, type StoreLink } from '@/data/projectsData'
-import appleBadge from '@/assets/apple-app-store-badge.svg'
-import playBadge  from '@/assets/google-play-store-badge.jpeg'
+import { cn } from '@/lib/utils'
+import appStoreBadge from '@/assets/app-store-badge.png'
+import playStoreBadge from '@/assets/google-play-badge.png'
+
+const KHELCOACH_LABELS = ['Athlete', 'Coach', 'Academy']
 
 function StoreBadge({ store }: { store: StoreLink }) {
   const isIos = store.platform === 'ios'
@@ -10,129 +15,195 @@ function StoreBadge({ store }: { store: StoreLink }) {
       href={store.url}
       target="_blank"
       rel="noreferrer"
-      aria-label={isIos ? 'Download on App Store' : 'Get it on Google Play'}
-      className={[
-        'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-colors h-7',
-        isIos
-          ? 'bg-white border border-gray-200 text-gray-800 hover:border-gray-400'
-          : 'bg-gray-900 text-white hover:bg-gray-700',
-      ].join(' ')}
+      aria-label={isIos ? 'Download on the App Store' : 'Get it on Google Play'}
+      className="inline-flex h-11 w-[148px] items-center justify-center transition hover:opacity-90 sm:h-12 sm:w-[160px]"
     >
       <img
-        src={isIos ? appleBadge : playBadge}
-        alt={isIos ? 'Apple' : 'Google Play'}
-        className="h-3.5 w-3.5 object-contain flex-shrink-0"
+        src={isIos ? appStoreBadge : playStoreBadge}
+        alt={isIos ? 'Download on the App Store' : 'Get it on Google Play'}
+        width={isIos ? 467 : 564}
+        height={isIos ? 156 : 168}
+        className="h-full w-full object-contain"
       />
-      <span>{isIos ? 'App Store' : 'Play Store'}</span>
     </a>
   )
 }
 
-const KHELCOACH_LABELS = ['Athlete', 'Coach', 'Academy']
-
 function StoreLinks({ stores, id }: { stores: StoreLink[]; id: string }) {
   if (id === 'khelcoach') {
-    const ios     = stores.filter((s) => s.platform === 'ios')
+    const ios = stores.filter((s) => s.platform === 'ios')
     const android = stores.filter((s) => s.platform === 'android')
     return (
-      <div className="space-y-1.5">
-        {ios.map((s, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span className="text-gray-400 text-xs w-14 flex-shrink-0">{KHELCOACH_LABELS[i]}</span>
-            <StoreBadge store={s} />
-            {android[i] && <StoreBadge store={android[i]} />}
+      <div className="flex w-full flex-col gap-2.5">
+        {ios.map((store, index) => (
+          <div key={store.url} className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <span className="w-16 shrink-0 font-body text-sm text-white/70">
+              {KHELCOACH_LABELS[index]}
+            </span>
+            <StoreBadge store={store} />
+            {android[index] ? <StoreBadge store={android[index]} /> : null}
           </div>
         ))}
       </div>
     )
   }
+
   return (
-    <div className="flex flex-wrap gap-2">
-      {stores.map((s, i) => <StoreBadge key={i} store={s} />)}
+    <div className="flex flex-wrap items-center gap-3">
+      {stores.map((store) => (
+        <StoreBadge key={store.url} store={store} />
+      ))}
     </div>
   )
 }
 
 export function Projects() {
+  const categories = useMemo(
+    () => ['All', ...Array.from(new Set(projectsData.map((p) => p.category)))],
+    []
+  )
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const filtered = useMemo(() => {
+    if (activeCategory === 'All') return projectsData
+    return projectsData.filter((p) => p.category === activeCategory)
+  }, [activeCategory])
+
+  const safeIndex = Math.min(activeIndex, Math.max(filtered.length - 1, 0))
+  const active = filtered[safeIndex]
+  const showPagination = filtered.length > 1
+
   return (
-    <section id="projects" className="py-24 px-6 lg:px-12">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-10">Things I have shipped</h2>
+    <section id="projects" className="px-4 py-16 sm:px-8 sm:py-24">
+      <div className="mx-auto w-full max-w-[1440px]">
+        <div className="mb-10 sm:mb-14">
+          <h2 className="max-w-3xl font-display text-4xl font-semibold tracking-[-0.96px] text-ink sm:text-5xl lg:text-[64px]">
+            Lets have a look at my <span className="text-accent">Portfolio</span>
+          </h2>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projectsData.map((proj) => (
-            <div
-              key={proj.id}
-              className="group rounded-2xl bg-white border border-gray-100 p-5 hover:border-violet-200 transition-all duration-300 flex flex-col shadow-sm hover:shadow-[0_8px_32px_rgba(109,40,217,0.08)]"
+        <div className="mb-8 flex flex-wrap items-center gap-3">
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => {
+                setActiveCategory(category)
+                setActiveIndex(0)
+              }}
+              className={cn(
+                'rounded-[24px] px-6 py-3.5 font-body text-base tracking-tight transition sm:text-lg',
+                activeCategory === category
+                  ? 'bg-dark text-white'
+                  : 'bg-surface text-black hover:bg-[#e8eaee]'
+              )}
             >
-              {/* Header */}
-              <div className="flex items-start justify-between gap-3 mb-3">
-                <div className="flex items-center gap-3">
-                  {proj.logo && (
-                    <div className="w-12 h-12 rounded-xl overflow-hidden bg-gray-50 border border-gray-100 flex-shrink-0 flex items-center justify-center shadow-sm">
-                      <img src={proj.logo} alt={`${proj.name} logo`} className="w-full h-full object-contain" />
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="text-gray-900 font-semibold">{proj.name}</h3>
-                    <span className="text-violet-600 text-xs font-medium">{proj.category}</span>
-                  </div>
-                </div>
-                {/* Website or live link */}
-                {(proj.website || proj.live) && (
-                  <a
-                    href={proj.website ?? proj.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open ${proj.name} website`}
-                    className="text-gray-300 hover:text-violet-600 transition-colors flex-shrink-0 p-1.5 rounded-lg hover:bg-violet-50 mt-0.5"
-                  >
-                    <ExternalLink size={14} />
-                  </a>
-                )}
-              </div>
-
-              <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-4">{proj.description}</p>
-
-              {/* Integration logos */}
-              {proj.integrations && proj.integrations.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2 mb-4">
-                  {proj.integrations.map((intg) => (
-                    <div
-                      key={intg.name}
-                      title={intg.name}
-                      className="h-7 px-2.5 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center hover:border-violet-200 transition-colors"
-                    >
-                      <img src={intg.logo} alt={intg.name} className="h-4 max-w-[64px] object-contain" />
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Tech stack - logo + name chips */}
-              <div className="flex flex-wrap gap-1.5 mb-0">
-                {proj.stack.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-gray-50 border border-gray-200 text-gray-500 text-xs"
-                  >
-                    {tech.logo && (
-                      <img src={tech.logo} alt={tech.name} className="h-3 w-3 object-contain flex-shrink-0" />
-                    )}
-                    {tech.name}
-                  </div>
-                ))}
-              </div>
-
-              {/* Store links */}
-              {proj.stores && proj.stores.length > 0 && (
-                <div className="pt-3 mt-3 border-t border-gray-50">
-                  <StoreLinks stores={proj.stores} id={proj.id} />
-                </div>
-              )}
-            </div>
+              {category}
+            </button>
           ))}
         </div>
+
+        <div className="h-[520px] sm:h-[560px] lg:h-[480px]">
+          <AnimatePresence mode="wait">
+            {active ? (
+              <motion.article
+                key={`${activeCategory}-${active.id}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.28 }}
+                className="flex h-full overflow-hidden rounded-[28px] bg-gradient-to-br from-[#1f1f1f] via-[#2c2118] to-accent/80"
+              >
+                <div
+                  className={cn(
+                    'grid h-full w-full',
+                    active.logoWide
+                      ? 'lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]'
+                      : 'lg:grid-cols-[1fr_1.15fr]'
+                  )}
+                >
+                  <div className="relative hidden items-center justify-center p-8 lg:flex xl:p-12">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(253,133,58,0.35),transparent_60%)]" />
+                    {active.logo ? (
+                      <img
+                        src={active.logo}
+                        alt=""
+                        className={cn(
+                          'relative z-10 drop-shadow-2xl',
+                          active.logoWide
+                            ? 'h-auto w-full max-w-[380px] object-contain xl:max-w-[460px]'
+                            : 'size-44 rounded-[32px] object-cover xl:size-52'
+                        )}
+                      />
+                    ) : null}
+                  </div>
+
+                  <div className="relative flex h-full flex-col gap-5 p-8 sm:p-10 lg:py-12 lg:pr-12">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex min-w-0 items-center gap-4">
+                        {active.logo ? (
+                          <img
+                            src={active.logo}
+                            alt=""
+                            className={cn(
+                              'shrink-0 drop-shadow-lg lg:hidden',
+                              active.logoWide
+                                ? 'h-10 w-28 object-contain sm:h-12 sm:w-36'
+                                : 'size-14 rounded-2xl object-cover'
+                            )}
+                          />
+                        ) : null}
+                        <h3 className="font-display text-3xl font-bold tracking-[-0.72px] text-[#fffaf5] sm:text-4xl lg:text-5xl">
+                          {active.name}
+                        </h3>
+                      </div>
+                      {(active.live || active.website) && (
+                        <a
+                          href={active.live ?? active.website}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Open ${active.name}`}
+                          className="flex size-12 shrink-0 items-center justify-center rounded-full border border-accent text-accent transition hover:bg-accent hover:text-white sm:size-14"
+                        >
+                          <ArrowUpRight className="size-6" />
+                        </a>
+                      )}
+                    </div>
+
+                    <p className="line-clamp-4 font-body text-base leading-relaxed tracking-[-0.3px] text-white/85 sm:text-lg lg:line-clamp-5">
+                      {active.description}
+                    </p>
+
+                    <div className="mt-auto min-h-[140px]">
+                      {active.stores && active.stores.length > 0 ? (
+                        <StoreLinks stores={active.stores} id={active.id} />
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              </motion.article>
+            ) : null}
+          </AnimatePresence>
+        </div>
+
+        {showPagination ? (
+          <div className="mt-8 flex items-center justify-center gap-3">
+            {filtered.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                aria-label={`Show ${project.name}`}
+                aria-current={index === safeIndex}
+                onClick={() => setActiveIndex(index)}
+                className={cn(
+                  'h-3.5 rounded-full transition-all',
+                  index === safeIndex ? 'w-14 bg-accent' : 'w-3.5 bg-[#e4e7ec] hover:bg-muted'
+                )}
+              />
+            ))}
+          </div>
+        ) : null}
       </div>
     </section>
   )

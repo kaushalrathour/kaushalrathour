@@ -1,30 +1,42 @@
-import { useState, useEffect } from 'react'
-import { Home, User, Briefcase, Code2, FolderOpen, Mail } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
+const RESUME_URL =
+  'https://drive.google.com/file/d/1KgQr2QLefblzr1q6YikEwpYHMiQDgNJ8'
+
 const NAV_ITEMS = [
-  { icon: Home,       href: '#hero',       label: 'Home' },
-  { icon: User,       href: '#about',      label: 'About' },
-  { icon: Briefcase,  href: '#experience', label: 'Experience' },
-  { icon: Code2,      href: '#skills',     label: 'Skills' },
-  { icon: FolderOpen, href: '#projects',   label: 'Projects' },
-  { icon: Mail,       href: '#contact',    label: 'Contact' },
+  { href: '#hero', label: 'Home', external: false },
+  { href: RESUME_URL, label: 'Resume', external: true },
+  { href: '#projects', label: 'Project', external: false },
+  { href: '#contact', label: 'Contact', external: false },
 ]
 
 export function Navbar() {
   const [active, setActive] = useState('#hero')
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const sections = NAV_ITEMS.map((n) => n.href.slice(1))
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    const ids = ['hero', 'experience', 'skills', 'why-hire', 'projects', 'contact']
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+          if (entry.isIntersecting) {
+            const id = entry.target.id
+            if (id === 'experience' || id === 'skills' || id === 'why-hire') setActive('')
+            else setActive(`#${id}`)
+          }
         })
       },
-      { threshold: 0.4 }
+      { threshold: 0.35 }
     )
-    sections.forEach((id) => {
+    ids.forEach((id) => {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
@@ -32,23 +44,101 @@ export function Navbar() {
   }, [])
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 px-4 py-2.5 rounded-full bg-white/80 backdrop-blur-md border border-gray-200 shadow-[0_4px_24px_rgba(0,0,0,0.10)]">
-      {NAV_ITEMS.map(({ icon: Icon, href, label }) => (
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-6">
+      <nav
+        className={cn(
+          'pointer-events-auto flex w-full max-w-[1298px] items-center justify-between gap-1 rounded-[50px] border border-white/80 bg-dark px-2 py-2 text-white shadow-[0_12px_40px_rgba(23,23,23,0.18)] backdrop-blur-md transition-all sm:px-2.5',
+          scrolled && 'shadow-[0_16px_48px_rgba(23,23,23,0.28)]'
+        )}
+      >
+        <div className="hidden items-center gap-1 md:flex">
+          {NAV_ITEMS.slice(0, 2).map((item) => (
+            <NavLink
+              key={item.href}
+              {...item}
+              active={!item.external && active === item.href}
+              onClick={() => {
+                if (!item.external) setActive(item.href)
+              }}
+            />
+          ))}
+        </div>
+
         <a
-          key={href}
-          href={href}
-          aria-label={label}
-          onClick={() => setActive(href)}
-          className={cn(
-            'p-3 rounded-full transition-all duration-300',
-            active === href
-              ? 'bg-violet-600 text-white shadow-[0_0_14px_rgba(109,40,217,0.35)]'
-              : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
-          )}
+          href="#hero"
+          className="mx-auto flex items-center gap-2.5 rounded-[60px] px-4 py-2 md:mx-0"
+          aria-label="Kaushal Rathour home"
         >
-          <Icon size={20} strokeWidth={2} />
+          <span className="flex size-10 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-white sm:size-11 sm:text-base">
+            KR
+          </span>
+          <span className="font-display text-lg font-bold tracking-tight sm:text-xl">KAUSHAL</span>
         </a>
-      ))}
-    </nav>
+
+        <div className="hidden items-center gap-1 md:flex">
+          {NAV_ITEMS.slice(2).map((item) => (
+            <NavLink
+              key={item.href}
+              {...item}
+              active={!item.external && active === item.href}
+              onClick={() => {
+                if (!item.external) setActive(item.href)
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="flex items-center gap-1 md:hidden">
+          {NAV_ITEMS.filter((n) => n.href !== '#hero').map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noreferrer' : undefined}
+              onClick={() => {
+                if (!item.external) setActive(item.href)
+              }}
+              className={cn(
+                'rounded-full px-2.5 py-2 text-xs',
+                !item.external && active === item.href
+                  ? 'bg-accent font-semibold'
+                  : 'text-white/80'
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+    </header>
+  )
+}
+
+function NavLink({
+  href,
+  label,
+  active,
+  external,
+  onClick,
+}: {
+  href: string
+  label: string
+  active: boolean
+  external: boolean
+  onClick: () => void
+}) {
+  return (
+    <a
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noreferrer' : undefined}
+      onClick={onClick}
+      className={cn(
+        'rounded-[60px] px-5 py-3 font-body text-[15px] tracking-[-0.3px] transition-colors lg:px-8 lg:text-[18px]',
+        active ? 'bg-accent font-bold text-white' : 'font-normal text-white/90 hover:text-white'
+      )}
+    >
+      {label}
+    </a>
   )
 }
