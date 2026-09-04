@@ -1,4 +1,3 @@
-import kashIcon            from '@/assets/kash-favicon.png'
 import seventhTriangle     from '@/assets/seventh_triangle.svg'
 import addictingElements   from '@/assets/addictingelements_logo.jpeg'
 import techInstance        from '@/assets/tech_instance.jpeg'
@@ -39,14 +38,13 @@ export interface ExperienceItem {
   company: string
   location: string
   period: string
-  type: 'Indie' | 'Full-time' | 'Freelance' | 'Internship'
+  type: 'Full-time' | 'Freelance' | 'Internship'
   website?: string
   linkedin?: string
   projects: Project[]
 }
 
 export const EXPERIENCE_LOGOS: Record<string, string> = {
-  indie:                kashIcon,
   'seventh-triangle':   seventhTriangle,
   'addicting-elements': addictingElements,
   'tech-instance':      techInstance,
@@ -118,31 +116,6 @@ export const experienceData: ExperienceItem[] = [
         integrations: [
           { name: 'Firebase',    logo: firebaseLogo },
           { name: 'Crashlytics', logo: crashlyticsLogo },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'indie',
-    role: 'Indie Engineer',
-    company: 'Kash',
-    location: 'Independent',
-    period: 'Apr 2026 – Present',
-    type: 'Indie',
-    website: 'https://kash.appmatters.in',
-    projects: [
-      {
-        name: 'Kash - Money Companion',
-        projectLogo: kashIcon,
-        bullets: [
-          'Built and shipped on App Store and Google Play, solo from design to production.',
-          'Quick Log: plain-language multi-entry capture (e.g. "coffee 80 yesterday, movie 299 2 days ago") with confidence-aware fallback.',
-          'Local-first SQLite model with optional cloud backup. Multi-account, multi-currency, offline analytics. Owned full product surface including ASO.',
-        ],
-        integrations: [
-          { name: 'RevenueCat', logo: revenuecatLogo },
-          { name: 'Sentry',     logo: sentryLogo },
-          { name: 'Firebase',   logo: firebaseLogo },
         ],
       },
     ],

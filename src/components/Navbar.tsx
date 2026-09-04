@@ -66,13 +66,25 @@ export function Navbar() {
 
         <a
           href="#hero"
-          className="mx-auto flex items-center gap-2.5 rounded-[60px] px-4 py-2 md:mx-0"
+          className="group mx-auto flex items-center gap-2.5 rounded-[60px] px-3 py-2 transition-[gap] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:gap-2 md:mx-0 sm:px-4"
           aria-label="Kaushal Rathour home"
         >
-          <span className="flex size-10 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-white sm:size-11 sm:text-base">
+          <span className="flex size-10 shrink-0 origin-center items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-white transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform group-hover:scale-[0.78] group-hover:-translate-x-1 sm:size-11 sm:text-base sm:group-hover:-translate-x-1.5">
             KR
           </span>
-          <span className="font-display text-lg font-bold tracking-tight sm:text-xl">KAUSHAL</span>
+          <span className="relative flex h-11 min-w-[10.5rem] items-center overflow-hidden sm:min-w-[12.75rem]">
+            <span className="absolute inset-y-0 left-0 flex items-center font-display text-lg font-bold tracking-tight transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:pointer-events-none group-hover:translate-x-2 group-hover:opacity-0 sm:text-xl">
+              KAUSHAL
+            </span>
+            <span className="absolute inset-y-0 left-0 flex -translate-x-2 flex-col justify-center opacity-0 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0 group-hover:opacity-100">
+              <span className="font-display text-[14px] font-normal leading-none tracking-[-0.21px] text-white/80">
+                Made by
+              </span>
+              <span className="mt-0.5 font-display text-[20px] font-semibold leading-none tracking-[-0.3px] whitespace-nowrap text-white">
+                Kaushal Rathour
+              </span>
+            </span>
+          </span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">

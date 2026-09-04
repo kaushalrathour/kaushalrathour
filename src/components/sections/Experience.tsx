@@ -4,7 +4,6 @@ import { experienceData, EXPERIENCE_LOGOS } from '@/data/experienceData'
 import { cn } from '@/lib/utils'
 
 const TYPE_STYLES: Record<string, string> = {
-  Indie: 'bg-accent-soft text-accent border-accent/20',
   'Full-time': 'bg-surface text-ink-strong border-[#e4e7ec]',
   Freelance: 'bg-surface text-ink border-[#e4e7ec]',
   Internship: 'bg-surface text-muted border-[#e4e7ec]',
@@ -84,6 +83,7 @@ export function Experience() {
                       type="button"
                       onClick={() => toggleExpanded(exp.id)}
                       className="group absolute left-0 top-4 focus:outline-none"
+                      aria-expanded={open}
                       aria-label={`Toggle ${exp.company}`}
                     >
                       <span
@@ -116,6 +116,7 @@ export function Experience() {
                         type="button"
                         className="flex w-full items-start justify-between gap-4 pt-1 text-left"
                         onClick={() => toggleExpanded(exp.id)}
+                        aria-expanded={open}
                       >
                         <div className="min-w-0 flex-1">
                           <div className="mb-1 flex flex-wrap items-center gap-2">
@@ -168,77 +169,89 @@ export function Experience() {
                           <ChevronDown
                             size={15}
                             className={cn(
-                              'text-muted transition-transform duration-300',
+                              'text-muted transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
                               open && 'rotate-180'
                             )}
                           />
                         </div>
                       </button>
 
-                      <div className={cn(open ? 'mt-4' : 'hidden')}>
-                        <div className="flex flex-col gap-3">
-                          {exp.projects.map((proj) => (
-                            <div
-                              key={proj.name}
-                              className="rounded-2xl border border-[#e4e7ec] bg-white p-5"
-                            >
-                              <div className="mb-4 flex items-center gap-3">
-                                {proj.projectLogo && (
-                                  <div className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#e4e7ec] bg-surface">
-                                    <img
-                                      src={proj.projectLogo}
-                                      alt={proj.name}
-                                      className="size-full object-contain"
-                                    />
-                                  </div>
-                                )}
-                                <div className="flex min-w-0 flex-1 items-center gap-2">
-                                  <p className="truncate font-body text-sm font-semibold text-ink-strong">
-                                    {proj.name}
-                                  </p>
-                                  {proj.website && (
-                                    <a
-                                      href={proj.website}
-                                      target="_blank"
-                                      rel="noreferrer"
-                                      className="shrink-0 text-muted transition-colors hover:text-accent"
-                                      aria-label={`${proj.name} website`}
-                                    >
-                                      <ExternalLink size={12} />
-                                    </a>
-                                  )}
-                                </div>
-                              </div>
-                              <ul className="mb-4 flex flex-col gap-2">
-                                {proj.bullets.map((b) => (
-                                  <li
-                                    key={b}
-                                    className="flex gap-2.5 font-body text-sm leading-relaxed text-ink"
-                                  >
-                                    <span className="mt-[7px] size-1 shrink-0 rounded-full bg-accent" />
-                                    {b}
-                                  </li>
-                                ))}
-                              </ul>
-                              {proj.integrations && proj.integrations.length > 0 && (
-                                <div className="flex flex-wrap gap-2 border-t border-[#f2f4f7] pt-3">
-                                  {proj.integrations.map((intg) => (
-                                    <div
-                                      key={intg.name}
-                                      title={intg.name}
-                                      className="flex h-7 items-center justify-center rounded-lg border border-[#e4e7ec] bg-surface px-2.5 transition-colors hover:border-accent/40"
-                                    >
+                      <div
+                        className={cn(
+                          'grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                          open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                        )}
+                      >
+                        <div className="overflow-hidden">
+                          <div
+                            className={cn(
+                              'flex flex-col gap-3 pt-4 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                              open ? 'opacity-100' : 'opacity-0'
+                            )}
+                          >
+                            {exp.projects.map((proj) => (
+                              <div
+                                key={proj.name}
+                                className="rounded-2xl border border-[#e4e7ec] bg-white p-5"
+                              >
+                                <div className="mb-4 flex items-center gap-3">
+                                  {proj.projectLogo && (
+                                    <div className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[#e4e7ec] bg-surface">
                                       <img
-                                        src={intg.logo}
-                                        alt={intg.name}
-                                        className="h-4 max-w-[64px] object-contain"
+                                        src={proj.projectLogo}
+                                        alt={proj.name}
+                                        className="size-full object-contain"
                                       />
                                     </div>
-                                  ))}
+                                  )}
+                                  <div className="flex min-w-0 flex-1 items-center gap-2">
+                                    <p className="truncate font-body text-sm font-semibold text-ink-strong">
+                                      {proj.name}
+                                    </p>
+                                    {proj.website && (
+                                      <a
+                                        href={proj.website}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="shrink-0 text-muted transition-colors hover:text-accent"
+                                        aria-label={`${proj.name} website`}
+                                      >
+                                        <ExternalLink size={12} />
+                                      </a>
+                                    )}
+                                  </div>
                                 </div>
-                              )}
-                            </div>
-                          ))}
+                                <ul className="mb-4 flex flex-col gap-2">
+                                  {proj.bullets.map((b) => (
+                                    <li
+                                      key={b}
+                                      className="flex gap-2.5 font-body text-sm leading-relaxed text-ink"
+                                    >
+                                      <span className="mt-[7px] size-1 shrink-0 rounded-full bg-accent" />
+                                      {b}
+                                    </li>
+                                  ))}
+                                </ul>
+                                {proj.integrations && proj.integrations.length > 0 && (
+                                  <div className="flex flex-wrap gap-2 border-t border-[#f2f4f7] pt-3">
+                                    {proj.integrations.map((intg) => (
+                                      <div
+                                        key={intg.name}
+                                        title={intg.name}
+                                        className="flex h-7 items-center justify-center rounded-lg border border-[#e4e7ec] bg-surface px-2.5 transition-colors hover:border-accent/40"
+                                      >
+                                        <img
+                                          src={intg.logo}
+                                          alt={intg.name}
+                                          className="h-4 max-w-[64px] object-contain"
+                                        />
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
