@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { ChevronDown, ExternalLink, Linkedin } from 'lucide-react'
 import { experienceData, EXPERIENCE_LOGOS } from '@/data/experienceData'
 import { cn } from '@/lib/utils'
@@ -9,16 +9,74 @@ const TYPE_STYLES: Record<string, string> = {
   Internship: 'bg-surface text-muted border-[#e4e7ec]',
 }
 
+/** Must match the grid-rows open/close transition duration. */
+const EXPAND_MS = 500
+
+function scrollByInstant(delta: number) {
+  if (Math.abs(delta) < 0.5) return
+  // html { scroll-behavior: smooth } would animate scrollBy/auto and look like a jump.
+  window.scrollBy({ top: delta, behavior: 'instant' })
+}
+
 export function Experience() {
   const [expanded, setExpanded] = useState<string>(experienceData[0].id)
+  const itemRefs = useRef<Record<string, HTMLDivElement | null>>({})
+  const pinRef = useRef<{ id: string; top: number } | null>(null)
+  const rafRef = useRef<number | null>(null)
+
+  const setExpandedPinned = (nextId: string, pinId: string) => {
+    const el = itemRefs.current[pinId]
+    if (el) pinRef.current = { id: pinId, top: el.getBoundingClientRect().top }
+    setExpanded(nextId)
+  }
 
   const toggleExpanded = (id: string) => {
-    setExpanded((current) => (current === id ? '' : id))
+    setExpandedPinned(expanded === id ? '' : id, id)
   }
 
   const selectExpanded = (id: string) => {
-    setExpanded(id)
+    setExpandedPinned(id, id)
   }
+
+  useLayoutEffect(() => {
+    const pin = pinRef.current
+    if (!pin) return
+
+    if (rafRef.current != null) {
+      cancelAnimationFrame(rafRef.current)
+      rafRef.current = null
+    }
+
+    const startedAt = performance.now()
+
+    const keepPinned = (now: number) => {
+      const el = itemRefs.current[pin.id]
+      if (!el) {
+        pinRef.current = null
+        rafRef.current = null
+        return
+      }
+
+      scrollByInstant(el.getBoundingClientRect().top - pin.top)
+
+      // Run for the full CSS height transition; one-shot correction is too early.
+      if (now - startedAt < EXPAND_MS) {
+        rafRef.current = requestAnimationFrame(keepPinned)
+      } else {
+        pinRef.current = null
+        rafRef.current = null
+      }
+    }
+
+    keepPinned(startedAt)
+
+    return () => {
+      if (rafRef.current != null) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = null
+      }
+    }
+  }, [expanded])
 
   return (
     <section id="experience" className="px-4 py-16 sm:px-8 sm:py-24">
@@ -72,13 +130,20 @@ export function Experience() {
           <div className="relative">
             <div className="absolute bottom-3 left-[19px] top-3 w-px bg-gradient-to-b from-accent/70 via-accent/25 to-transparent" />
 
-            <div>
+            {/* overflow-anchor:none — browser scroll anchoring fights the height swap */}
+            <div className="[overflow-anchor:none]">
               {experienceData.map((exp, index) => {
                 const open = expanded === exp.id
                 const logo = EXPERIENCE_LOGOS[exp.id]
 
                 return (
-                  <div key={exp.id} className="relative pl-14">
+                  <div
+                    key={exp.id}
+                    ref={(node) => {
+                      itemRefs.current[exp.id] = node
+                    }}
+                    className="relative pl-14 [overflow-anchor:none]"
+                  >
                     <button
                       type="button"
                       onClick={() => toggleExpanded(exp.id)}
@@ -163,7 +228,7 @@ export function Experience() {
                           </div>
                         </div>
                         <div className="flex shrink-0 items-center gap-2 pt-0.5">
-                          <span className="hidden font-body text-xs text-muted sm:block">
+                          <span className="font-body text-xs text-muted">
                             {exp.period}
                           </span>
                           <ChevronDown
@@ -238,12 +303,12 @@ export function Experience() {
                                       <div
                                         key={intg.name}
                                         title={intg.name}
-                                        className="flex h-7 items-center justify-center rounded-lg border border-[#e4e7ec] bg-surface px-2.5 transition-colors hover:border-accent/40"
+                                        className="flex h-8 items-center justify-center rounded-lg border border-[#e4e7ec] bg-surface px-3 transition-colors hover:border-accent/40"
                                       >
                                         <img
                                           src={intg.logo}
                                           alt={intg.name}
-                                          className="h-4 max-w-[64px] object-contain"
+                                          className="h-5 max-w-[96px] object-contain"
                                         />
                                       </div>
                                     ))}

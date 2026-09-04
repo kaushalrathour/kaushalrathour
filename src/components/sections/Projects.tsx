@@ -99,7 +99,7 @@ export function Projects() {
       <div className="mx-auto w-full max-w-[1440px]">
         <div className="mb-10 sm:mb-14">
           <h2 className="max-w-3xl font-display text-4xl font-semibold tracking-[-0.96px] text-ink sm:text-5xl lg:text-[64px]">
-            Lets have a look at my <span className="text-accent">Portfolio</span>
+            Selected <span className="text-accent">work</span>
           </h2>
         </div>
 
@@ -196,9 +196,30 @@ export function Projects() {
                       <span className="line-clamp-3 sm:line-clamp-4">{active.description}</span>
                     </p>
 
+                    {(active.stack.length > 0 || (active.integrations?.length ?? 0) > 0) && (
+                      <div className="mt-3 flex shrink-0 flex-wrap gap-2">
+                        {[...active.stack, ...(active.integrations ?? [])].map((item) => (
+                          <span
+                            key={item.name}
+                            title={item.name}
+                            className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-white/15 bg-white/10 px-2.5"
+                          >
+                            {'logo' in item && item.logo ? (
+                              <img
+                                src={item.logo}
+                                alt=""
+                                className="h-4 max-w-[56px] object-contain"
+                              />
+                            ) : null}
+                            <span className="font-body text-xs text-white/80">{item.name}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     <div className="min-h-0 flex-1" aria-hidden />
 
-                    <div className="h-[148px] shrink-0 sm:h-[160px]">
+                    <div className="h-[132px] shrink-0 sm:h-[148px]">
                       {active.stores && active.stores.length > 0 ? (
                         <StoreLinks stores={active.stores} id={active.id} />
                       ) : null}

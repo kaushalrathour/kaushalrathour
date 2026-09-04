@@ -7,7 +7,7 @@ const RESUME_URL =
 const NAV_ITEMS = [
   { href: '#hero', label: 'Home', external: false },
   { href: RESUME_URL, label: 'Resume', external: true },
-  { href: '#projects', label: 'Project', external: false },
+  { href: '#projects', label: 'Projects', external: false },
   { href: '#contact', label: 'Contact', external: false },
 ]
 

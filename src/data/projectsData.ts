@@ -18,6 +18,8 @@ import fastlaneLogo      from '@/assets/fastlane.svg'
 import codepushLogo      from '@/assets/codepush.png'
 import geminiLogo        from '@/assets/gemini.svg'
 import vertexLogo        from '@/assets/Vertex_AI_Logo.webp'
+import graphqlLogo       from '@/assets/graphql.png'
+import onesignalLogo     from '@/assets/onesignal.png'
 
 // Tech stack logos
 import reactLogo         from '@/assets/react.png'
@@ -61,14 +63,15 @@ export const projectsData: Project[] = [
     id: 'jockey',
     name: 'Jockey',
     description:
-      'Mobile commerce app. Built digital wallet end-to-end, shipped Disney/Marvel campaign flows in a Shopify + Appmaker.xyz ecosystem. In-app review pushed store rating from 3.8 to 4.8.',
+      'Mobile commerce app. Built digital wallet end-to-end, shipped Disney/Marvel campaign flows in a Shopify + AppMaker ecosystem. In-app review pushed store rating from 3.8 to 4.8.',
     stack: [
       { name: 'React Native', logo: reactLogo },
       { name: 'TypeScript',   logo: typescriptLogo },
     ],
     integrations: [
       { name: 'Shopify',      logo: shopifyLogo },
-      { name: 'Appmaker.xyz', logo: appmakerLogo },
+      { name: 'AppMaker',     logo: appmakerLogo },
+      { name: 'GraphQL',      logo: graphqlLogo },
     ],
     website: 'https://jockey.in/',
     stores: [
@@ -95,6 +98,7 @@ export const projectsData: Project[] = [
       { name: 'RevenueCat', logo: revenuecatLogo },
       { name: 'Sentry',     logo: sentryLogo },
       { name: 'Firebase',   logo: firebaseLogo },
+      { name: 'OneSignal',  logo: onesignalLogo },
     ],
     live: 'https://kash.appmatters.in',
     stores: [
@@ -117,6 +121,7 @@ export const projectsData: Project[] = [
     integrations: [
       { name: 'Juspay',   logo: juspayLogo },
       { name: 'Shopify',  logo: shopifyLogo },
+      { name: 'GraphQL',  logo: graphqlLogo },
       { name: 'Firebase', logo: firebaseLogo },
     ],
     website: 'https://ownd.in/',

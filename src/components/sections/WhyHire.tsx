@@ -60,9 +60,9 @@ export function WhyHire() {
 
             <a
               href="#contact"
-              className="mt-10 inline-flex items-center justify-center rounded-[32px] border border-[#151515] bg-transparent px-12 py-6 font-display text-2xl font-semibold tracking-[-0.48px] text-[#151515] transition hover:bg-dark hover:text-white sm:text-[32px]"
+              className="mt-10 inline-flex items-center justify-center rounded-[60px] bg-accent px-8 py-4 font-display text-base font-medium tracking-[-0.3px] text-white transition hover:brightness-105 sm:px-10 sm:text-xl"
             >
-              Hire me
+              Get in touch
             </a>
           </div>
         </div>

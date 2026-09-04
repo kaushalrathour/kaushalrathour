@@ -20,8 +20,10 @@ import githubLogo       from '@/assets/github.svg'
 import firebaseLogo     from '@/assets/firebase.png'
 import crashlyticsLogo  from '@/assets/crashlytics.png'
 import sentryLogo       from '@/assets/sentry.png'
+import onesignalLogo    from '@/assets/onesignal.png'
 import shopifyLogo      from '@/assets/Shopify.webp'
 import appmakerLogo     from '@/assets/Appmaker.xyz.webp'
+import graphqlLogo      from '@/assets/graphql.png'
 import nodeLogo         from '@/assets/Node.js_logo.svg'
 import expressLogo      from '@/assets/express-js.png'
 import mongoLogo        from '@/assets/mongodb.png'
@@ -86,13 +88,14 @@ export const skillsData: SkillCategory[] = [
       { name: 'Firebase',    logo: firebaseLogo },
       { name: 'Crashlytics', logo: crashlyticsLogo },
       { name: 'Sentry',      logo: sentryLogo },
+      { name: 'OneSignal',   logo: onesignalLogo },
     ],
   },
   {
     label: 'Integrations',
     skills: [
-      { name: 'Shopify',      logo: shopifyLogo },
-      { name: 'Appmaker.xyz', logo: appmakerLogo },
+      { name: 'Shopify',  logo: shopifyLogo },
+      { name: 'AppMaker', logo: appmakerLogo },
     ],
   },
   {
@@ -101,6 +104,7 @@ export const skillsData: SkillCategory[] = [
       { name: 'Node.js',    logo: nodeLogo },
       { name: 'Express.js', logo: expressLogo, darkBg: true },
       { name: 'MongoDB',    logo: mongoLogo },
+      { name: 'GraphQL',    logo: graphqlLogo },
     ],
   },
   {

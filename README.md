@@ -10,7 +10,7 @@ At **Seventh Triangle** (Noida) I ship D2C and consumer products. I also build *
 
 ## Experience
 
-### React Native Developer - Seventh Triangle Pvt. Ltd.
+### React Native Engineer - Seventh Triangle Pvt. Ltd.
 **Mar 2025 - Present · Noida**
 
 - Ship D2C and consumer apps on iOS and Android
@@ -19,7 +19,7 @@ At **Seventh Triangle** (Noida) I ship D2C and consumer products. I also build *
 - Analytics, crash monitoring, and shared UI across apps
 
 ### Freelance React Native - Addicting Elements
-**Apr 2025 · Remote**
+**Apr 2026 · Remote**
 
 - House AI - interior/exterior generation with Gemini Flash / Vertex AI
 - Upload → preview → generate → save, with subscription gating

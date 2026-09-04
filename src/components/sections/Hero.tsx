@@ -56,19 +56,19 @@ export function Hero() {
               className="relative z-10 mx-auto h-auto w-[88%] max-w-[520px] object-contain object-bottom drop-shadow-[0_24px_60px_rgba(23,23,23,0.18)]"
             />
 
-            <div className="absolute bottom-6 left-1/2 z-20 flex w-[min(100%,367px)] -translate-x-1/2 items-center gap-2.5 rounded-[50px] border-2 border-white bg-white/15 p-2.5 backdrop-blur-[7.5px]">
+            <div className="absolute bottom-6 left-1/2 z-20 flex w-[min(100%,380px)] -translate-x-1/2 items-center gap-1.5 rounded-[50px] border-2 border-white bg-white/15 p-2 backdrop-blur-[7.5px]">
               <a
                 href="#projects"
-                className="flex w-[208px] shrink-0 items-center justify-center gap-1 rounded-[60px] bg-accent px-4 py-2.5 font-body text-lg font-medium tracking-[-0.3px] text-white transition hover:brightness-105"
+                className="inline-flex shrink-0 items-center justify-center gap-1 rounded-[60px] bg-accent px-5 py-2.5 font-body text-lg font-medium tracking-[-0.3px] text-white transition hover:brightness-105"
               >
                 Portfolio
                 <ArrowUpRight className="size-6" strokeWidth={2} />
               </a>
               <a
                 href="#contact"
-                className="flex flex-1 items-center justify-center rounded-[60px] px-4 py-2.5 font-body text-lg font-light tracking-[-0.3px] text-white transition hover:bg-white/10"
+                className="flex min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-[60px] px-3 py-2.5 font-body text-lg font-light tracking-[-0.3px] text-white transition hover:bg-white/10"
               >
-                Hire me
+                Get in touch
               </a>
             </div>
           </motion.div>

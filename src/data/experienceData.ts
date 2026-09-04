@@ -13,6 +13,7 @@ import fastlaneLogo        from '@/assets/fastlane.svg'
 import codepushLogo        from '@/assets/codepush.png'
 import geminiLogo          from '@/assets/gemini.svg'
 import vertexLogo          from '@/assets/Vertex_AI_Logo.webp'
+import graphqlLogo         from '@/assets/graphql.png'
 import owndLogo            from '@/assets/ownd-aditya-birla-fashion-app.svg'
 import jockeyLogo          from '@/assets/jockey-india-mobile-commerce-app.webp'
 import khelcoachLogo       from '@/assets/khelcoach-sports-app-icon.webp'
@@ -67,12 +68,13 @@ export const experienceData: ExperienceItem[] = [
         website: 'https://jockey.in/',
         bullets: [
           'Built digital wallet end-to-end (balance, transactions, redemption).',
-          'Shipped Disney and Marvel campaign flows in a Shopify + Appmaker.xyz ecosystem.',
+          'Shipped Disney and Marvel campaign flows in a Shopify + AppMaker ecosystem.',
           'Proposed in-app review triggered post-order. Rating: 3.8 to 4.8. The following month: sales +~11%, orders +~5%.',
         ],
         integrations: [
-          { name: 'Shopify',      logo: shopifyLogo },
-          { name: 'Appmaker.xyz', logo: appmakerLogo },
+          { name: 'Shopify',  logo: shopifyLogo },
+          { name: 'AppMaker', logo: appmakerLogo },
+          { name: 'GraphQL',  logo: graphqlLogo },
         ],
       },
       {
@@ -86,6 +88,7 @@ export const experienceData: ExperienceItem[] = [
         integrations: [
           { name: 'Juspay',   logo: juspayLogo },
           { name: 'Shopify',  logo: shopifyLogo },
+          { name: 'GraphQL',  logo: graphqlLogo },
           { name: 'Firebase', logo: firebaseLogo },
         ],
       },
