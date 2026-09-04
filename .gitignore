@@ -1,1 +1,31 @@
+# Dependencies
 node_modules
+
+# Build
+dist
+dist-ssr
+*.local
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs / cache
+logs
+*.log
+npm-debug.log*
+.vite
+.turbo
+.cache
+coverage
+
+# Editor / OS
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# Test / misc local output
+test-results
+*.tsbuildinfo
