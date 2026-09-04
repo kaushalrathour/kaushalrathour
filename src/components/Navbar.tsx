@@ -23,7 +23,7 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
-    const ids = ['hero', 'experience', 'skills', 'why-hire', 'projects', 'contact']
+    const ids = ['hero', 'projects', 'experience', 'why-hire', 'skills', 'contact']
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

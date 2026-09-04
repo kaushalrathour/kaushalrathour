@@ -55,7 +55,7 @@ export interface Project {
   logoWide?: boolean
 }
 
-/** Ranked for All + category filters (order preserved within each category). */
+/** Impact rank for All (category filters keep relative order): proof → ownership → brand → rest. */
 export const projectsData: Project[] = [
   {
     id: 'jockey',
@@ -79,6 +79,32 @@ export const projectsData: Project[] = [
     logo: jockeyLogo,
     logoWide: true,
   },
+
+  {
+    id: 'kash',
+    name: 'Kash',
+    description:
+      'Money companion app on the App Store and Google Play. Built solo: Quick Log parses plain-language entries, local-first SQLite model, multi-account, multi-currency, optional cloud backup.',
+    stack: [
+      { name: 'React Native', logo: reactLogo },
+      { name: 'SQLite',       logo: sqliteLogo },
+      { name: 'Node.js',      logo: nodeLogo },
+      { name: 'TypeScript',   logo: typescriptLogo },
+    ],
+    integrations: [
+      { name: 'RevenueCat', logo: revenuecatLogo },
+      { name: 'Sentry',     logo: sentryLogo },
+      { name: 'Firebase',   logo: firebaseLogo },
+    ],
+    live: 'https://kash.appmatters.in',
+    stores: [
+      { platform: 'ios',     url: 'https://apps.apple.com/us/app/kash-your-money-companion/id6774987648' },
+      { platform: 'android', url: 'https://play.google.com/store/apps/details?id=com.kashfinance.app' },
+    ],
+    category: 'Indie',
+    logo: kashLogo,
+  },
+
   {
     id: 'ownd',
     name: 'OWND!',
@@ -98,6 +124,7 @@ export const projectsData: Project[] = [
     logo: owndLogo,
     logoWide: true,
   },
+
   {
     id: 'house-ai',
     name: 'House AI',
@@ -121,6 +148,7 @@ export const projectsData: Project[] = [
     category: 'AI',
     logo: houseAiLogo,
   },
+
   {
     id: 'khelcoach',
     name: 'KhelCoach',
@@ -148,30 +176,7 @@ export const projectsData: Project[] = [
     category: 'Sports',
     logo: khelcoachIcon,
   },
-  {
-    id: 'kash',
-    name: 'Kash',
-    description:
-      'Money companion app on the App Store and Google Play. Built solo: Quick Log parses plain-language entries, local-first SQLite model, multi-account, multi-currency, optional cloud backup.',
-    stack: [
-      { name: 'React Native', logo: reactLogo },
-      { name: 'SQLite',       logo: sqliteLogo },
-      { name: 'Node.js',      logo: nodeLogo },
-      { name: 'TypeScript',   logo: typescriptLogo },
-    ],
-    integrations: [
-      { name: 'RevenueCat', logo: revenuecatLogo },
-      { name: 'Sentry',     logo: sentryLogo },
-      { name: 'Firebase',   logo: firebaseLogo },
-    ],
-    live: 'https://kash.appmatters.in',
-    stores: [
-      { platform: 'ios',     url: 'https://apps.apple.com/us/app/kash-your-money-companion/id6774987648' },
-      { platform: 'android', url: 'https://play.google.com/store/apps/details?id=com.kashfinance.app' },
-    ],
-    category: 'Indie',
-    logo: kashLogo,
-  },
+
   {
     id: 'picklebay',
     name: 'Picklebay',
@@ -192,5 +197,5 @@ export const projectsData: Project[] = [
     ],
     category: 'Sports',
     logo: picklebayLogo,
-  },
+  }
 ]

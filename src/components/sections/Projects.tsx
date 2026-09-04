@@ -8,7 +8,13 @@ import playStoreBadge from '@/assets/google-play-badge.png'
 
 const KHELCOACH_LABELS = ['Athlete', 'Coach', 'Academy']
 
-function StoreBadge({ store }: { store: StoreLink }) {
+function StoreBadge({
+  store,
+  compact = false,
+}: {
+  store: StoreLink
+  compact?: boolean
+}) {
   const isIos = store.platform === 'ios'
   return (
     <a
@@ -16,14 +22,17 @@ function StoreBadge({ store }: { store: StoreLink }) {
       target="_blank"
       rel="noreferrer"
       aria-label={isIos ? 'Download on the App Store' : 'Get it on Google Play'}
-      className="inline-flex h-11 w-[148px] items-center justify-center transition hover:opacity-90 sm:h-12 sm:w-[160px]"
+      className={cn(
+        'inline-flex shrink-0 items-center justify-center transition hover:opacity-90',
+        compact ? 'h-8 sm:h-9' : 'h-11 sm:h-12'
+      )}
     >
       <img
         src={isIos ? appStoreBadge : playStoreBadge}
         alt={isIos ? 'Download on the App Store' : 'Get it on Google Play'}
         width={isIos ? 467 : 564}
         height={isIos ? 156 : 168}
-        className="h-full w-full object-contain"
+        className="h-full w-auto max-w-none object-contain"
       />
     </a>
   )
@@ -34,14 +43,19 @@ function StoreLinks({ stores, id }: { stores: StoreLink[]; id: string }) {
     const ios = stores.filter((s) => s.platform === 'ios')
     const android = stores.filter((s) => s.platform === 'android')
     return (
-      <div className="flex w-full flex-col gap-2.5">
+      <div className="flex h-full w-full flex-col justify-end gap-1.5 sm:gap-2">
         {ios.map((store, index) => (
-          <div key={store.url} className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <span className="w-16 shrink-0 font-body text-sm text-white/70">
+          <div
+            key={store.url}
+            className="grid w-full grid-cols-[5.5rem_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[6rem_minmax(0,1fr)]"
+          >
+            <span className="font-body text-xs leading-none text-white/70 sm:text-sm">
               {KHELCOACH_LABELS[index]}
             </span>
-            <StoreBadge store={store} />
-            {android[index] ? <StoreBadge store={android[index]} /> : null}
+            <div className="flex min-w-0 items-center justify-between gap-2">
+              <StoreBadge store={store} compact />
+              {android[index] ? <StoreBadge store={android[index]} compact /> : <span />}
+            </div>
           </div>
         ))}
       </div>
@@ -49,7 +63,12 @@ function StoreLinks({ stores, id }: { stores: StoreLink[]; id: string }) {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div
+      className={cn(
+        'flex h-full w-full items-end',
+        stores.length > 1 ? 'justify-between gap-3' : 'justify-start'
+      )}
+    >
       {stores.map((store) => (
         <StoreBadge key={store.url} store={store} />
       ))}
@@ -73,6 +92,7 @@ export function Projects() {
   const safeIndex = Math.min(activeIndex, Math.max(filtered.length - 1, 0))
   const active = filtered[safeIndex]
   const showPagination = filtered.length > 1
+  const externalUrl = active?.live ?? active?.website
 
   return (
     <section id="projects" className="px-4 py-16 sm:px-8 sm:py-24">
@@ -104,7 +124,7 @@ export function Projects() {
           ))}
         </div>
 
-        <div className="h-[520px] sm:h-[560px] lg:h-[480px]">
+        <div className="h-[560px] sm:h-[580px] lg:h-[500px]">
           <AnimatePresence mode="wait">
             {active ? (
               <motion.article
@@ -115,67 +135,70 @@ export function Projects() {
                 transition={{ duration: 0.28 }}
                 className="flex h-full overflow-hidden rounded-[28px] bg-gradient-to-br from-[#1f1f1f] via-[#2c2118] to-accent/80"
               >
-                <div
-                  className={cn(
-                    'grid h-full w-full',
-                    active.logoWide
-                      ? 'lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]'
-                      : 'lg:grid-cols-[1fr_1.15fr]'
-                  )}
-                >
-                  <div className="relative hidden items-center justify-center p-8 lg:flex xl:p-12">
+                <div className="grid h-full w-full lg:grid-cols-[1fr_1.15fr]">
+                  <div className="relative hidden h-full items-center justify-center p-10 lg:flex">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(253,133,58,0.35),transparent_60%)]" />
                     {active.logo ? (
-                      <img
-                        src={active.logo}
-                        alt=""
-                        className={cn(
-                          'relative z-10 drop-shadow-2xl',
-                          active.logoWide
-                            ? 'h-auto w-full max-w-[380px] object-contain xl:max-w-[460px]'
-                            : 'size-44 rounded-[32px] object-cover xl:size-52'
-                        )}
-                      />
+                      <div className="relative z-10 flex h-52 w-full max-w-[420px] items-center justify-center">
+                        <img
+                          src={active.logo}
+                          alt=""
+                          className={cn(
+                            'drop-shadow-2xl',
+                            active.logoWide
+                              ? 'max-h-full max-w-full object-contain'
+                              : 'size-44 rounded-[32px] object-cover xl:size-52'
+                          )}
+                        />
+                      </div>
                     ) : null}
                   </div>
 
-                  <div className="relative flex h-full flex-col gap-5 p-8 sm:p-10 lg:py-12 lg:pr-12">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex min-w-0 items-center gap-4">
+                  <div className="relative flex h-full min-h-0 flex-col p-6 sm:p-10 lg:py-12 lg:pr-12">
+                    <div className="flex h-14 shrink-0 items-center justify-between gap-4 sm:h-16">
+                      <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                         {active.logo ? (
-                          <img
-                            src={active.logo}
-                            alt=""
-                            className={cn(
-                              'shrink-0 drop-shadow-lg lg:hidden',
-                              active.logoWide
-                                ? 'h-10 w-28 object-contain sm:h-12 sm:w-36'
-                                : 'size-14 rounded-2xl object-cover'
-                            )}
-                          />
-                        ) : null}
-                        <h3 className="font-display text-3xl font-bold tracking-[-0.72px] text-[#fffaf5] sm:text-4xl lg:text-5xl">
+                          <div className="flex size-14 shrink-0 items-center justify-center lg:hidden">
+                            <img
+                              src={active.logo}
+                              alt=""
+                              className={cn(
+                                'drop-shadow-lg',
+                                active.logoWide
+                                  ? 'max-h-10 max-w-full object-contain'
+                                  : 'size-14 rounded-2xl object-cover'
+                              )}
+                            />
+                          </div>
+                        ) : (
+                          <div className="size-14 shrink-0 lg:hidden" aria-hidden />
+                        )}
+                        <h3 className="truncate font-display text-3xl font-bold tracking-[-0.72px] text-[#fffaf5] sm:text-4xl lg:text-5xl">
                           {active.name}
                         </h3>
                       </div>
-                      {(active.live || active.website) && (
-                        <a
-                          href={active.live ?? active.website}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`Open ${active.name}`}
-                          className="flex size-12 shrink-0 items-center justify-center rounded-full border border-accent text-accent transition hover:bg-accent hover:text-white sm:size-14"
-                        >
-                          <ArrowUpRight className="size-6" />
-                        </a>
-                      )}
+                      <div className="flex size-12 shrink-0 items-center justify-center sm:size-14">
+                        {externalUrl ? (
+                          <a
+                            href={externalUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`Open ${active.name}`}
+                            className="flex size-full items-center justify-center rounded-full border border-accent text-accent transition hover:bg-accent hover:text-white"
+                          >
+                            <ArrowUpRight className="size-6" />
+                          </a>
+                        ) : null}
+                      </div>
                     </div>
 
-                    <p className="line-clamp-4 font-body text-base leading-relaxed tracking-[-0.3px] text-white/85 sm:text-lg lg:line-clamp-5">
-                      {active.description}
+                    <p className="mt-5 h-[4.75rem] shrink-0 overflow-hidden font-body text-base leading-relaxed tracking-[-0.3px] text-white/85 sm:mt-6 sm:h-[6.5rem] sm:text-lg">
+                      <span className="line-clamp-3 sm:line-clamp-4">{active.description}</span>
                     </p>
 
-                    <div className="mt-auto min-h-[140px]">
+                    <div className="min-h-0 flex-1" aria-hidden />
+
+                    <div className="h-[148px] shrink-0 sm:h-[160px]">
                       {active.stores && active.stores.length > 0 ? (
                         <StoreLinks stores={active.stores} id={active.id} />
                       ) : null}

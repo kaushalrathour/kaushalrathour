@@ -54,31 +54,6 @@ export const EXPERIENCE_LOGOS: Record<string, string> = {
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: 'indie',
-    role: 'Indie Engineer',
-    company: 'Kash',
-    location: 'Independent',
-    period: 'Apr 2026 – Present',
-    type: 'Indie',
-    website: 'https://kash.appmatters.in',
-    projects: [
-      {
-        name: 'Kash - Money Companion',
-        projectLogo: kashIcon,
-        bullets: [
-          'Built and shipped on App Store and Google Play, solo from design to production.',
-          'Quick Log: plain-language multi-entry capture (e.g. "coffee 80 yesterday, movie 299 2 days ago") with confidence-aware fallback.',
-          'Local-first SQLite model with optional cloud backup. Multi-account, multi-currency, offline analytics. Owned full product surface including ASO.',
-        ],
-        integrations: [
-          { name: 'RevenueCat', logo: revenuecatLogo },
-          { name: 'Sentry',     logo: sentryLogo },
-          { name: 'Firebase',   logo: firebaseLogo },
-        ],
-      },
-    ],
-  },
-  {
     id: 'seventh-triangle',
     role: 'React Native Engineer',
     company: 'Seventh Triangle Pvt. Ltd.',
@@ -88,20 +63,6 @@ export const experienceData: ExperienceItem[] = [
     website: 'https://seventhtriangle.com/',
     linkedin: 'https://www.linkedin.com/company/seventh-triangle-consulting/',
     projects: [
-      {
-        name: 'OWND! – Gen Z Fashion Commerce (Aditya Birla Group)',
-        projectLogo: owndLogo,
-        website: 'https://ownd.in/',
-        bullets: [
-          'Building core commerce journeys and launch-critical integrations for a large consumer platform.',
-          'Integrated Juspay for payments.',
-        ],
-        integrations: [
-          { name: 'Juspay',   logo: juspayLogo },
-          { name: 'Shopify',  logo: shopifyLogo },
-          { name: 'Firebase', logo: firebaseLogo },
-        ],
-      },
       {
         name: 'Jockey - Mobile Commerce',
         projectLogo: jockeyLogo,
@@ -114,6 +75,20 @@ export const experienceData: ExperienceItem[] = [
         integrations: [
           { name: 'Shopify',      logo: shopifyLogo },
           { name: 'Appmaker.xyz', logo: appmakerLogo },
+        ],
+      },
+      {
+        name: 'OWND! – Gen Z Fashion Commerce (Aditya Birla Group)',
+        projectLogo: owndLogo,
+        website: 'https://ownd.in/',
+        bullets: [
+          'Building core commerce journeys and launch-critical integrations for a large consumer platform.',
+          'Integrated Juspay for payments.',
+        ],
+        integrations: [
+          { name: 'Juspay',   logo: juspayLogo },
+          { name: 'Shopify',  logo: shopifyLogo },
+          { name: 'Firebase', logo: firebaseLogo },
         ],
       },
       {
@@ -143,6 +118,31 @@ export const experienceData: ExperienceItem[] = [
         integrations: [
           { name: 'Firebase',    logo: firebaseLogo },
           { name: 'Crashlytics', logo: crashlyticsLogo },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'indie',
+    role: 'Indie Engineer',
+    company: 'Kash',
+    location: 'Independent',
+    period: 'Apr 2026 – Present',
+    type: 'Indie',
+    website: 'https://kash.appmatters.in',
+    projects: [
+      {
+        name: 'Kash - Money Companion',
+        projectLogo: kashIcon,
+        bullets: [
+          'Built and shipped on App Store and Google Play, solo from design to production.',
+          'Quick Log: plain-language multi-entry capture (e.g. "coffee 80 yesterday, movie 299 2 days ago") with confidence-aware fallback.',
+          'Local-first SQLite model with optional cloud backup. Multi-account, multi-currency, offline analytics. Owned full product surface including ASO.',
+        ],
+        integrations: [
+          { name: 'RevenueCat', logo: revenuecatLogo },
+          { name: 'Sentry',     logo: sentryLogo },
+          { name: 'Firebase',   logo: firebaseLogo },
         ],
       },
     ],
