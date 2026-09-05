@@ -1,7 +1,12 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { ChevronDown, ExternalLink, Linkedin } from 'lucide-react'
 import { experienceData, EXPERIENCE_LOGOS } from '@/data/experienceData'
 import { cn } from '@/lib/utils'
+import { lockNavSection } from '@/lib/navSectionLock'
+import {
+  ACCORDION_EXPAND_MS,
+  useAccordionScrollLock,
+} from '@/lib/useAccordionScrollLock'
 
 const TYPE_STYLES: Record<string, string> = {
   'Full-time': 'bg-surface text-ink-strong border-[#e4e7ec]',
@@ -9,75 +14,37 @@ const TYPE_STYLES: Record<string, string> = {
   Internship: 'bg-surface text-muted border-[#e4e7ec]',
 }
 
-/** Must match the grid-rows open/close transition duration. */
-const EXPAND_MS = 500
-
-function scrollByInstant(delta: number) {
-  if (Math.abs(delta) < 0.5) return
-  // html { scroll-behavior: smooth } would animate scrollBy/auto and look like a jump.
-  window.scrollBy({ top: delta, behavior: 'instant' })
-}
-
 export function Experience() {
   const [expanded, setExpanded] = useState<string>(experienceData[0].id)
   const itemRefs = useRef<Record<string, HTMLDivElement | null>>({})
-  const pinRef = useRef<{ id: string; top: number } | null>(null)
-  const rafRef = useRef<number | null>(null)
+  const { armLock } = useAccordionScrollLock(expanded)
 
-  const setExpandedPinned = (nextId: string, pinId: string) => {
-    const el = itemRefs.current[pinId]
-    if (el) pinRef.current = { id: pinId, top: el.getBoundingClientRect().top }
+  const commitExpanded = (nextId: string) => {
+    lockNavSection('#experience', ACCORDION_EXPAND_MS + 200)
     setExpanded(nextId)
   }
 
+  /** Timeline: keep the clicked row under the cursor while height animates. */
   const toggleExpanded = (id: string) => {
-    setExpandedPinned(expanded === id ? '' : id, id)
+    const el = itemRefs.current[id]
+    if (el) {
+      armLock({
+        kind: 'element',
+        getElement: () => itemRefs.current[id],
+        top: el.getBoundingClientRect().top,
+      })
+    }
+    commitExpanded(expanded === id ? '' : id)
   }
 
-  const selectExpanded = (id: string) => {
-    setExpandedPinned(id, id)
+  /**
+   * Left sticky list: freeze viewport scrollY.
+   * Works the same for every switch direction (up/down), not only the first.
+   */
+  const navToggleExpanded = (id: string) => {
+    armLock({ kind: 'viewport', y: window.scrollY })
+    commitExpanded(expanded === id ? '' : id)
   }
-
-  useLayoutEffect(() => {
-    const pin = pinRef.current
-    if (!pin) return
-
-    if (rafRef.current != null) {
-      cancelAnimationFrame(rafRef.current)
-      rafRef.current = null
-    }
-
-    const startedAt = performance.now()
-
-    const keepPinned = (now: number) => {
-      const el = itemRefs.current[pin.id]
-      if (!el) {
-        pinRef.current = null
-        rafRef.current = null
-        return
-      }
-
-      scrollByInstant(el.getBoundingClientRect().top - pin.top)
-
-      // Run for the full CSS height transition; one-shot correction is too early.
-      if (now - startedAt < EXPAND_MS) {
-        rafRef.current = requestAnimationFrame(keepPinned)
-      } else {
-        pinRef.current = null
-        rafRef.current = null
-      }
-    }
-
-    keepPinned(startedAt)
-
-    return () => {
-      if (rafRef.current != null) {
-        cancelAnimationFrame(rafRef.current)
-        rafRef.current = null
-      }
-    }
-  }, [expanded])
-
   return (
     <section id="experience" className="px-4 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-[1298px]">
@@ -85,7 +52,7 @@ export function Experience() {
           My <span className="text-accent">Work Experience</span>
         </h2>
 
-        <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12">
+        <div className="lg:grid lg:grid-cols-[minmax(240px,280px)_1fr] lg:gap-12">
           <div className="hidden lg:block">
             <div className="sticky top-28 flex flex-col gap-1.5">
               {experienceData.map((exp) => {
@@ -95,7 +62,9 @@ export function Experience() {
                   <button
                     key={exp.id}
                     type="button"
-                    onClick={() => selectExpanded(exp.id)}
+                    onClick={() => navToggleExpanded(exp.id)}
+                    aria-expanded={active}
+                    aria-controls={`experience-panel-${exp.id}`}
                     className={cn(
                       'w-full rounded-2xl border px-3 py-3 text-left transition-all duration-200',
                       active
@@ -103,17 +72,17 @@ export function Experience() {
                         : 'border-transparent hover:bg-surface'
                     )}
                   >
-                    <div className="mb-1 flex items-center gap-2.5">
+                    <div className="mb-1 flex items-start gap-2.5">
                       {logo && (
                         <img
                           src={logo}
                           alt={exp.company}
-                          className="size-5 shrink-0 rounded object-contain"
+                          className="mt-0.5 size-5 shrink-0 rounded object-contain"
                         />
                       )}
                       <span
                         className={cn(
-                          'truncate font-body text-sm font-medium',
+                          'min-w-0 flex-1 font-body text-sm font-medium leading-snug break-words',
                           active ? 'text-accent' : 'text-muted'
                         )}
                       >
@@ -139,6 +108,7 @@ export function Experience() {
                 return (
                   <div
                     key={exp.id}
+                    id={`experience-panel-${exp.id}`}
                     ref={(node) => {
                       itemRefs.current[exp.id] = node
                     }}

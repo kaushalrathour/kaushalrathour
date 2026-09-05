@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { setNavSectionLockHandler } from '@/lib/navSectionLock'
 
 const RESUME_URL =
   'https://drive.google.com/file/d/1KgQr2QLefblzr1q6YikEwpYHMiQDgNJ8'
@@ -17,6 +18,9 @@ const MOBILE_ITEMS = NAV_ITEMS.filter((n) => n.href !== '#hero')
 
 /** Ignore section spy while smooth-scrolling to a clicked nav target. */
 const NAV_LOCK_MS = 1200
+
+/** Section under this viewport Y owns the active tab (tall sections break ratio spies). */
+const SPY_PROBE_RATIO = 0.28
 
 export function Navbar() {
   const [active, setActive] = useState('#hero')
@@ -38,7 +42,7 @@ export function Navbar() {
     }
   }
 
-  const lockToSection = (href: string) => {
+  const lockToSection = (href: string, ms = NAV_LOCK_MS) => {
     releaseNavLock()
     navLockRef.current = true
     setActive(href)
@@ -48,8 +52,20 @@ export function Navbar() {
     }
     scrollEndHandlerRef.current = onScrollEnd
     window.addEventListener('scrollend', onScrollEnd)
-    unlockTimerRef.current = window.setTimeout(releaseNavLock, NAV_LOCK_MS)
+    unlockTimerRef.current = window.setTimeout(releaseNavLock, ms)
   }
+
+  useEffect(() => {
+    setNavSectionLockHandler((href, ms) => lockToSection(href, ms))
+    return () => setNavSectionLockHandler(null)
+  }, [])
+
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash && hash !== '#') {
+      lockToSection(hash)
+    }
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -60,29 +76,40 @@ export function Navbar() {
 
   useEffect(() => {
     const ids = ['hero', 'projects', 'experience', 'why-hire', 'skills', 'contact']
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (navLockRef.current) return
+    let raf = 0
 
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+    const syncActiveFromScroll = () => {
+      raf = 0
+      if (navLockRef.current) return
 
-        const top = visible[0]
-        if (!top) return
+      const probe = window.innerHeight * SPY_PROBE_RATIO
+      let current = 'hero'
 
-        const id = top.target.id
-        if (id === 'skills' || id === 'why-hire') setActive('')
-        else setActive(`#${id}`)
-      },
-      { threshold: [0.2, 0.35, 0.5] }
-    )
-    ids.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const rect = el.getBoundingClientRect()
+        if (rect.top <= probe && rect.bottom > probe) {
+          current = id
+        }
+      }
+
+      if (current === 'skills' || current === 'why-hire') setActive('')
+      else setActive(`#${current}`)
+    }
+
+    const onScrollOrResize = () => {
+      if (raf) return
+      raf = requestAnimationFrame(syncActiveFromScroll)
+    }
+
+    syncActiveFromScroll()
+    window.addEventListener('scroll', onScrollOrResize, { passive: true })
+    window.addEventListener('resize', onScrollOrResize)
     return () => {
-      observer.disconnect()
+      if (raf) cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScrollOrResize)
+      window.removeEventListener('resize', onScrollOrResize)
       releaseNavLock()
     }
   }, [])

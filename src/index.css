@@ -38,6 +38,11 @@
     scrollbar-color: #fd853a #f2f4f7;
   }
 
+  /* Fixed navbar clearance for #projects / #experience / etc. */
+  section[id] {
+    scroll-margin-top: 6.5rem;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
