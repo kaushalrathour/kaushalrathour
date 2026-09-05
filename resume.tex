@@ -21,16 +21,13 @@
 \usepackage{fontawesome5}
 
 % Consistent list spacing
-% Level 1: section-level bullets (e.g., Skills items)
 \setlist[itemize]{leftmargin=*, topsep=3pt, itemsep=3pt, parsep=0pt}
-% Level 2: nested bullets (e.g., projects inside an org)
 \setlist[itemize,2]{leftmargin=4mm, topsep=2pt, itemsep=2pt, parsep=0pt}
 \renewcommand{\labelitemi}{\textbullet}
 
 % Color definitions
 \definecolor{darkblue}{RGB}{0,0,139}
 
-% Page layout
 \setlength{\multicolsep}{0pt}
 \pagestyle{fancy}
 \fancyhf{}
@@ -47,7 +44,6 @@
 
 \setlength{\footskip}{4pt}
 
-% Hyperlink setup
 \usepackage[hidelinks]{hyperref}
 
 \hypersetup{
@@ -57,7 +53,6 @@
     urlcolor=darkblue,
 }
 
-% Formatting
 \urlstyle{same}
 \raggedright
 \setlength{\tabcolsep}{0in}
@@ -70,9 +65,11 @@
 
 \begin{document}
 
-% Header
+% Header - legal name kept as Kaushal Kumar
 \begin{center}
     {\Huge \textbf{Kaushal Kumar}} \\
+    \vspace{1mm}
+    {\large React Native Engineer} \\
     \vspace{2mm}
 
     \small
@@ -82,48 +79,20 @@
 
     \href{https://linkedin.com/in/kaushalrathour}{LinkedIn} |
     \href{https://github.com/kaushalrathour}{GitHub} |
-    \href{https://www.npmjs.com/~kaushalrathour}{NPM} |
-    \href{https://linktr.ee/kaushalrathour}{Portfolio}
+    \href{https://kaushalrathour.appmatters.in/}{Portfolio}
 
 \end{center}
 
 \vspace{-4mm}
 
-% Summary
 \section*{Summary}
 
 \justifying
-React Native engineer with \textbf{2+ years} shipping production apps for iOS and Android. Built and maintained consumer, D2C, and AI-powered products across core feature work, release automation, and store delivery. Comfortable owning a feature end-to-end: design decisions, implementation, and what happens after it ships.
+React Native engineer with \textbf{2+ years} shipping production iOS and Android apps for consumer and D2C brands at Seventh Triangle - commerce, wallets, and campaign-driven products. Owns features end-to-end: UI, native integrations (payments, analytics, push), and store release via Fastlane and CodePush. Also ships \textbf{Kash}, an independent app on the App Store and Play Store, built solo including its backend.
 
-% Independent Project
-\section*{Independent Project}
-
-\begin{itemize}[leftmargin=*]
-
-\item
-\textbf{Indie Engineer - \href{https://kash.appmatters.in}{Kash}}
-\hfill
-\textit{Apr 2026 -- Present}
-
-\begin{itemize}[leftmargin=4mm]
-
-\item Built and shipped Kash, a money companion app on the \textbf{App Store and Google Play}, solo from design through production release.
-
-\item Built Quick Log: plain-language expense capture (e.g., ``coffee 80 yesterday, movie 299 2 days ago'') that parses multiple entries in one input with confidence-aware fallback.
-
-\item Local-first SQLite data model with optional cloud backup; shipped multi-account, multi-currency, and offline analytics. Owned the full product surface including backend, store release, and ASO.
-
-\end{itemize}
-
-
-\end{itemize}
-
-% Experience
 \section*{Experience}
 
 \begin{itemize}[leftmargin=*]
-
-% SEVENTH TRIANGLE
 
 \item
 \textbf{React Native Engineer}
@@ -135,56 +104,52 @@ React Native engineer with \textbf{2+ years} shipping production apps for iOS an
 \textit{Noida, India}
 
 \begin{itemize}[leftmargin=4mm]
- 
-\item \textbf{OWND! - Gen Z Fashion Commerce Platform (Aditya Birla Group)}
+
+\item \textbf{Jockey India - Mobile Commerce}
 
 \begin{itemize}[leftmargin=4mm]
 
-\item Building core commerce journeys and launch-critical mobile integrations for a large consumer platform.
+\item Owned the digital wallet end-to-end (balance, transactions, redemption) inside a Shopify-ecosystem production app.
 
-\item Partnering with design and engineering stakeholders to ship reliable flows with strong UX and production readiness.
+\item Shipped campaign experiences for brand collaborations (\textbf{Disney}, \textbf{Marvel}).
+
+\item Proposed and implemented post-order in-app review prompting; store rating moved from \textbf{3.8 to 4.8}.
 
 \end{itemize}
 
-\item \textbf{Jockey India - Mobile Commerce Application}
+\item \textbf{OWND! - Gen Z Fashion Commerce (Aditya Birla Group)}
 
 \begin{itemize}[leftmargin=4mm]
 
-\item Built a digital wallet system end-to-end (balance, transactions, redemption) inside a production commerce app.
+\item Owned commerce journeys and launch-critical mobile integrations for a pre-launch consumer platform.
 
-\item Shipped campaign experiences for brand collaborations (\textbf{Disney}, \textbf{Marvel}) in a Shopify-integrated ecosystem.
-
-\item Proposed and implemented in-app review prompting triggered at the happy path (post-order). Store rating rose from \textbf{3.8 to 4.8}; the month after the rating increased saw sales up \textbf{\textasciitilde11\%} and orders up \textbf{\textasciitilde5\%} vs the prior month.
+\item Integrated \textbf{Juspay} payments; partnered with design and engineering on UX and production readiness.
 
 \end{itemize}
 
-\item \textbf{KhelCoach - Sports Ecosystem (Athlete, Coach, Academy Apps)}
+\item \textbf{KhelCoach - Sports Ecosystem (Athlete, Coach, Academy)}
 
 \begin{itemize}[leftmargin=4mm]
 
-\item Delivered 3 role-based apps (athlete/coach/academy) with access control and shared design system components.
+\item Shipped 3 role-based apps with shared design-system components and access control.
 
-\item Automated release pipelines with \textbf{Fastlane} and shipped iterative updates via \textbf{CodePush}.
-
-\item Integrated payments and booking flows for real-time transactions.
+\item Automated releases with \textbf{Fastlane} and OTA updates via \textbf{CodePush}; integrated payments and booking flows.
 
 \end{itemize}
 
-\item \textbf{Picklebay - Hyperlocal Marketplace}
+\item \textbf{Picklebay - Pickleball Sports Platform}
 
 \begin{itemize}[leftmargin=4mm]
 
-\item Owned end-to-end delivery for a WebToNative mobile app, adding native-like interactions via custom JS bridges.
+\item Owned end-to-end delivery of a \textbf{WebToNative} app with custom JS bridges for native-like interactions.
 
-\item Added Firebase Analytics and Crashlytics instrumentation to monitor stability and funnel performance.
+\item Instrumented Firebase Analytics and Crashlytics for stability and funnel monitoring.
 
 \end{itemize}
 
 \end{itemize}
 
 \vspace{1mm}
-
-% HOUSE AI
 
 \item
 \textbf{Freelance React Native Engineer}
@@ -196,26 +161,20 @@ React Native engineer with \textbf{2+ years} shipping production apps for iOS an
 \textit{Miami, Florida, USA (Remote)}
 
 \begin{itemize}[leftmargin=4mm]
- 
+
 \item \textbf{House AI - Interior \& Exterior Design App}
 
 \begin{itemize}[leftmargin=4mm]
 
-\item Shipped AI image transformation flows using \textbf{Gemini Flash} and \textbf{Vertex AI}, optimized for mobile performance and responsiveness.
+\item Built Gemini Flash / Vertex AI generation flows (upload \(\rightarrow\) preview \(\rightarrow\) generate \(\rightarrow\) save) with subscription gating; FastAPI backend work when needed.
 
-\item Designed end-to-end product journeys: upload \(\rightarrow\) preview \(\rightarrow\) generate \(\rightarrow\) save, with subscription gating and upgrade moments.
-
-\item Improved app stability and perceived speed by tightening API orchestration and UI rendering around AI outputs.
-
-\item Supported a consumer product with \textbf{20K+ downloads}, active paid subscribers, and a \textbf{4.5 rating}.
+\item Owned stability and performance work on a live consumer product with \textbf{20K+ downloads}, paid subscribers, and a \textbf{4.5} rating.
 
 \end{itemize}
 
 \end{itemize}
 
 \vspace{1mm}
-
-% TECH INSTANCE
 
 \item
 \textbf{React Native Intern}
@@ -227,14 +186,12 @@ React Native engineer with \textbf{2+ years} shipping production apps for iOS an
 \textit{Remote}
 
 \begin{itemize}[leftmargin=4mm]
- 
+
 \item \textbf{Hunger - Food Delivery Platform}
 
 \begin{itemize}[leftmargin=4mm]
 
-\item Built a React Native app from scratch, delivering core flows and reusable API hooks.
-
-\item Integrated Firebase Authentication and improved data structure for better scalability.
+\item Built a React Native app from scratch: core flows, reusable API hooks, and Firebase Authentication.
 
 \end{itemize}
 
@@ -242,42 +199,61 @@ React Native engineer with \textbf{2+ years} shipping production apps for iOS an
 
 \end{itemize}
 
-% Skills
+\section*{Independent Project}
+
+\begin{itemize}[leftmargin=*]
+
+\item
+\textbf{\href{https://kash.appmatters.in}{Kash} - Money Companion}
+\hfill
+\textit{Apr 2026 -- Present}
+
+\begin{itemize}[leftmargin=4mm]
+
+\item Designed and shipped Kash solo end-to-end (product, UI, backend, store release, ASO) on the \textbf{App Store and Google Play}.
+
+\item Built Quick Log: plain-language multi-entry expense capture with confidence-aware fallback for ambiguous input.
+
+\item Local-first \textbf{SQLite} storage with optional cloud backup; multi-account, multi-currency, and offline analytics.
+
+\end{itemize}
+
+\end{itemize}
+
 \section*{Technical Skills}
 
 \begin{itemize}[leftmargin=*]
 
 \item
-\textbf{Mobile Development:}
-\textit{React Native (CLI \& Expo), TypeScript, Redux Toolkit, Zustand, MMKV}
+\textbf{Mobile:}
+\textit{React Native (CLI \& Expo), TypeScript, Redux Toolkit, Zustand, MMKV, SQLite}
 
 \item
 \textbf{AI \& Integrations:}
-\textit{Gemini Flash, Vertex AI, AI integrations}
+\textit{Gemini Flash, Vertex AI, Shopify, AppMaker}
 
 \item
-\textbf{DevOps \& Deployment:}
-\textit{Fastlane, CodePush, GitHub Actions}
+\textbf{DevOps \& Release:}
+\textit{Fastlane, CodePush, GitHub Actions, App Store \& Play Store release}
 
 \item
-\textbf{Payments \& Monetization:}
-\textit{In-App Purchases, RevenueCat, Razorpay}
+\textbf{Payments:}
+\textit{In-App Purchases, RevenueCat, Razorpay, Juspay}
 
 \item
 \textbf{Performance \& Analytics:}
-\textit{Firebase Analytics, Crashlytics, Sentry, FlashList Optimization}
+\textit{Firebase Analytics, Crashlytics, Sentry, OneSignal, FlashList}
 
 \item
 \textbf{Backend \& Cloud:}
-\textit{Node.js, Express.js, Firebase (Firestore, FCM), MongoDB, REST APIs}
+\textit{Node.js, Express.js, FastAPI, MongoDB, GraphQL, Firebase (Firestore, FCM), REST APIs}
 
 \item
 \textbf{Tools:}
-\textit{Git, Postman, Xcode, Android Studio, VSCode}
+\textit{Git, Postman, Xcode, Android Studio}
 
 \end{itemize}
 
-% Education
 \section*{Education}
 
 \begin{itemize}[leftmargin=*]

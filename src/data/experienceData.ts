@@ -69,7 +69,7 @@ export const experienceData: ExperienceItem[] = [
         bullets: [
           'Owned the digital wallet surface end-to-end: balance, transactions, and redemption against the commerce stack.',
           'Shipped campaign modules (Disney/Marvel) inside the Shopify + AppMaker + GraphQL setup used by the store app.',
-          'Proposed post-order in-app review; store rating moved 3.8 to 4.8. Following month: sales +~11%, orders +~5%.',
+          'Proposed post-order in-app review; store rating moved 3.8 to 4.8.',
         ],
         integrations: [
           { name: 'Shopify',  logo: shopifyLogo },
