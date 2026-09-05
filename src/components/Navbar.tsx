@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -15,10 +15,41 @@ const NAV_ITEMS = [
 
 const MOBILE_ITEMS = NAV_ITEMS.filter((n) => n.href !== '#hero')
 
+/** Ignore section spy while smooth-scrolling to a clicked nav target. */
+const NAV_LOCK_MS = 1200
+
 export function Navbar() {
   const [active, setActive] = useState('#hero')
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const navLockRef = useRef(false)
+  const unlockTimerRef = useRef<number | null>(null)
+  const scrollEndHandlerRef = useRef<(() => void) | null>(null)
+
+  const releaseNavLock = () => {
+    navLockRef.current = false
+    if (unlockTimerRef.current != null) {
+      window.clearTimeout(unlockTimerRef.current)
+      unlockTimerRef.current = null
+    }
+    if (scrollEndHandlerRef.current) {
+      window.removeEventListener('scrollend', scrollEndHandlerRef.current)
+      scrollEndHandlerRef.current = null
+    }
+  }
+
+  const lockToSection = (href: string) => {
+    releaseNavLock()
+    navLockRef.current = true
+    setActive(href)
+
+    const onScrollEnd = () => {
+      releaseNavLock()
+    }
+    scrollEndHandlerRef.current = onScrollEnd
+    window.addEventListener('scrollend', onScrollEnd)
+    unlockTimerRef.current = window.setTimeout(releaseNavLock, NAV_LOCK_MS)
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -31,21 +62,29 @@ export function Navbar() {
     const ids = ['hero', 'projects', 'experience', 'why-hire', 'skills', 'contact']
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id
-            if (id === 'skills' || id === 'why-hire') setActive('')
-            else setActive(`#${id}`)
-          }
-        })
+        if (navLockRef.current) return
+
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+
+        const top = visible[0]
+        if (!top) return
+
+        const id = top.target.id
+        if (id === 'skills' || id === 'why-hire') setActive('')
+        else setActive(`#${id}`)
       },
-      { threshold: 0.35 }
+      { threshold: [0.2, 0.35, 0.5] }
     )
     ids.forEach((id) => {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      releaseNavLock()
+    }
   }, [])
 
   useEffect(() => {
@@ -62,7 +101,7 @@ export function Navbar() {
   }, [menuOpen])
 
   const goTo = (href: string, external: boolean) => {
-    if (!external) setActive(href)
+    if (!external) lockToSection(href)
     setMenuOpen(false)
   }
 
@@ -82,7 +121,7 @@ export function Navbar() {
                 {...item}
                 active={!item.external && active === item.href}
                 onClick={() => {
-                  if (!item.external) setActive(item.href)
+                  if (!item.external) lockToSection(item.href)
                 }}
               />
             ))}
@@ -90,7 +129,10 @@ export function Navbar() {
 
           <a
             href="#hero"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => {
+              lockToSection('#hero')
+              setMenuOpen(false)
+            }}
             className="group flex min-w-0 items-center gap-2.5 rounded-[60px] px-2 py-2 transition-[gap] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:gap-2 active:gap-2 sm:px-4"
             aria-label="Kaushal Rathour home"
           >
@@ -119,7 +161,7 @@ export function Navbar() {
                 {...item}
                 active={!item.external && active === item.href}
                 onClick={() => {
-                  if (!item.external) setActive(item.href)
+                  if (!item.external) lockToSection(item.href)
                 }}
               />
             ))}
