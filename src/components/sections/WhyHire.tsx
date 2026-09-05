@@ -9,9 +9,9 @@ export function WhyHire() {
     <section id="why-hire" className="px-4 py-10 sm:px-8 sm:py-14">
       <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[40px] bg-surface px-5 py-14 sm:rounded-[50px] sm:px-12 sm:py-[90px] lg:px-[71px]">
         <div className="mx-auto flex max-w-[720px] flex-col items-start">
-          <p className="font-body text-xs font-semibold tracking-[0.16em] text-muted uppercase">
+          {/* <p className="font-body text-xs font-semibold tracking-[0.16em] text-muted uppercase">
             Working style
-          </p>
+          </p> */}
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-0.96px] text-ink sm:text-5xl lg:text-[64px]">
             How I <span className="text-accent">work</span>
           </h2>
