@@ -6,9 +6,6 @@ import zustandLogo      from '@/assets/zustand.png'
 import sqliteLogo       from '@/assets/sqlite-logo.jpeg'
 import geminiLogo       from '@/assets/gemini.svg'
 import vertexLogo       from '@/assets/Vertex_AI_Logo.webp'
-import claudeLogo       from '@/assets/Claude-ai-logo.webp'
-import aiStudioLogo     from '@/assets/aistudio.png'
-import cursorLogo       from '@/assets/Cursor_logo.png'
 import revenuecatLogo   from '@/assets/revenuecat.png'
 import razorpayLogo     from '@/assets/razorpay.svg'
 import juspayLogo       from '@/assets/juspay.svg'
@@ -57,11 +54,8 @@ export const skillsData: SkillCategory[] = [
   {
     label: 'AI & LLMs',
     skills: [
-      { name: 'Gemini Flash',     logo: geminiLogo },
-      { name: 'Vertex AI',        logo: vertexLogo },
-      { name: 'Claude',           logo: claudeLogo },
-      { name: 'Google AI Studio', logo: aiStudioLogo, darkBg: true },
-      { name: 'Cursor',           logo: cursorLogo },
+      { name: 'Gemini Flash', logo: geminiLogo },
+      { name: 'Vertex AI',    logo: vertexLogo },
     ],
   },
   {
@@ -105,6 +99,7 @@ export const skillsData: SkillCategory[] = [
       { name: 'Express.js', logo: expressLogo, darkBg: true },
       { name: 'MongoDB',    logo: mongoLogo },
       { name: 'GraphQL',    logo: graphqlLogo },
+      { name: 'FastAPI' },
     ],
   },
   {

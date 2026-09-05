@@ -6,6 +6,9 @@ const LINKEDIN = 'https://linkedin.com/in/kaushalrathour'
 const GITHUB = 'https://github.com/kaushalrathour'
 const CALENDLY_URL = 'https://calendly.com/kaushallsbd'
 
+const secondaryBtn =
+  'inline-flex items-center justify-center gap-3 rounded-[60px] border border-dark px-6 py-4 font-display text-base font-medium tracking-[-0.3px] text-dark transition hover:bg-dark hover:text-white sm:px-8 sm:py-5 sm:text-xl'
+
 declare global {
   interface Window {
     Calendly?: {
@@ -31,36 +34,40 @@ export function Contact() {
           Open to React Native roles. <span className="text-accent">Let&apos;s talk</span>
         </h2>
 
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-xl lg:max-w-2xl">
           <a
             href={MAILTO}
-            className="inline-flex items-center gap-3 rounded-[60px] bg-accent px-8 py-5 font-display text-base font-medium tracking-[-0.3px] text-white transition hover:brightness-105 sm:px-10 sm:text-xl"
+            className="inline-flex w-full items-center justify-center gap-3 rounded-[60px] bg-accent px-6 py-4 font-display text-base font-medium tracking-[-0.3px] text-white transition hover:brightness-105 sm:px-8 sm:py-5 sm:text-xl"
           >
             <Mail className="size-6 shrink-0" />
             kaushal.codes@gmail.com
           </a>
-          <a
-            href={LINKEDIN}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-3 rounded-[60px] border border-dark px-8 py-5 font-display text-base font-medium tracking-[-0.3px] text-dark transition hover:bg-dark hover:text-white sm:px-10 sm:text-xl"
-          >
-            <Linkedin className="size-6 shrink-0" />
-            LinkedIn
-          </a>
-          <a
-            href={GITHUB}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-3 rounded-[60px] border border-dark px-8 py-5 font-display text-base font-medium tracking-[-0.3px] text-dark transition hover:bg-dark hover:text-white sm:px-10 sm:text-xl"
-          >
-            <Github className="size-6 shrink-0" />
-            GitHub
-          </a>
+
+          <div className="grid grid-cols-2 gap-3">
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noreferrer"
+              className={secondaryBtn}
+            >
+              <Linkedin className="size-6 shrink-0" />
+              LinkedIn
+            </a>
+            <a
+              href={GITHUB}
+              target="_blank"
+              rel="noreferrer"
+              className={secondaryBtn}
+            >
+              <Github className="size-6 shrink-0" />
+              GitHub
+            </a>
+          </div>
+
           <a
             href={CALENDLY_URL}
             onClick={openCalendly}
-            className="inline-flex items-center gap-3 rounded-[60px] border border-dark px-8 py-5 font-display text-base font-medium tracking-[-0.3px] text-dark transition hover:bg-dark hover:text-white sm:px-10 sm:text-xl"
+            className={`${secondaryBtn} w-full`}
           >
             <Calendar className="size-6 shrink-0" />
             Book a call

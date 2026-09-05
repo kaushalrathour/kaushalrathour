@@ -67,9 +67,9 @@ export const experienceData: ExperienceItem[] = [
         projectLogo: jockeyLogo,
         website: 'https://jockey.in/',
         bullets: [
-          'Built digital wallet end-to-end (balance, transactions, redemption).',
-          'Shipped Disney and Marvel campaign flows in a Shopify + AppMaker ecosystem.',
-          'Proposed in-app review triggered post-order. Rating: 3.8 to 4.8. The following month: sales +~11%, orders +~5%.',
+          'Owned the digital wallet surface end-to-end: balance, transactions, and redemption against the commerce stack.',
+          'Shipped campaign modules (Disney/Marvel) inside the Shopify + AppMaker + GraphQL setup used by the store app.',
+          'Proposed post-order in-app review; store rating moved 3.8 to 4.8. Following month: sales +~11%, orders +~5%.',
         ],
         integrations: [
           { name: 'Shopify',  logo: shopifyLogo },
@@ -78,12 +78,12 @@ export const experienceData: ExperienceItem[] = [
         ],
       },
       {
-        name: 'OWND! – Gen Z Fashion Commerce (Aditya Birla Group)',
+        name: 'OWND! - Gen Z Fashion Commerce (Aditya Birla Group)',
         projectLogo: owndLogo,
         website: 'https://ownd.in/',
         bullets: [
-          'Building core commerce journeys and launch-critical integrations for a large consumer platform.',
-          'Integrated Juspay for payments.',
+          'Owning pre-launch commerce journeys and payment wiring on a large consumer RN codebase.',
+          'Integrated Juspay and kept Shopify/GraphQL/Firebase paths aligned for launch-critical flows.',
         ],
         integrations: [
           { name: 'Juspay',   logo: juspayLogo },
@@ -93,13 +93,13 @@ export const experienceData: ExperienceItem[] = [
         ],
       },
       {
-        name: 'KhelCoach – Sports Ecosystem',
+        name: 'KhelCoach - Sports Ecosystem',
         projectLogo: khelcoachLogo,
         website: 'https://www.khelcoach.com/',
         bullets: [
-          'Delivered 3 role-based apps (athlete/coach/academy) with shared design system.',
-          'Automated release pipelines with Fastlane, OTA updates via CodePush.',
-          'Integrated payments and booking flows.',
+          'Delivered three role apps (athlete/coach/academy) on a shared design system with one release process.',
+          'Owned Fastlane store pipelines and CodePush OTA so fixes could ship without full store cycles.',
+          'Wired Razorpay payments and booking flows with Firebase-backed monitoring.',
         ],
         integrations: [
           { name: 'Fastlane',  logo: fastlaneLogo },
@@ -113,8 +113,8 @@ export const experienceData: ExperienceItem[] = [
         projectLogo: picklebayLogo,
         website: 'https://picklebay.com/',
         bullets: [
-          'Owned end-to-end delivery for a WebToNative pickleball app covering courts, play, and community flows.',
-          'Instrumented Firebase Analytics and Crashlytics for stability and funnel monitoring.',
+          'Owned WebToNative delivery with custom JS bridges for courts, play, and community flows.',
+          'Instrumented Firebase Analytics and Crashlytics for stability and funnel visibility in production.',
         ],
         integrations: [
           { name: 'Firebase',    logo: firebaseLogo },
@@ -133,13 +133,13 @@ export const experienceData: ExperienceItem[] = [
     linkedin: 'https://www.linkedin.com/company/addictingelements/',
     projects: [
       {
-        name: 'House AI – Interior and Exterior Design',
+        name: 'House AI - Interior and Exterior Design',
         projectLogo: houseAiLogo,
         website: 'https://www.houseaiapp.com/',
         bullets: [
-          'Shipped AI image transformation flows using Gemini Flash and Vertex AI.',
-          'Built upload to preview to generate to save journeys with subscription gating.',
-          'Supported a consumer product with 20K+ downloads and a 4.5 rating.',
+          'Owned mobile AI generate flows (Gemini Flash / Vertex) plus FastAPI backend work when the product needed it.',
+          'Built upload → preview → generate → save with RevenueCat gating and Sentry for production issues.',
+          'Shipped against a live consumer base (20K+ downloads, 4.5 rating) - not a demo.',
         ],
         integrations: [
           { name: 'Gemini Flash', logo: geminiLogo },
@@ -160,10 +160,10 @@ export const experienceData: ExperienceItem[] = [
     linkedin: 'https://www.linkedin.com/company/tech-instance',
     projects: [
       {
-        name: 'Hunger – Food Delivery Platform',
+        name: 'Hunger - Food Delivery Platform',
         bullets: [
-          'Built the app from scratch, delivering core flows and reusable API hooks.',
-          'Integrated Firebase Authentication.',
+          'Built the RN app from scratch: core delivery flows and reusable API hooks.',
+          'Integrated Firebase Authentication as the auth path for the product.',
         ],
         integrations: [
           { name: 'Firebase', logo: firebaseLogo },

@@ -12,17 +12,6 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="relative z-10 mb-2 flex flex-col items-center text-center"
         >
-          <div className="relative mb-4">
-            <span className="inline-flex items-center rounded-full border border-dark/90 bg-white/40 px-6 py-2.5 font-body text-base font-medium tracking-[-0.3px] text-dark sm:text-xl">
-              Hello!
-            </span>
-            <span className="absolute -right-3 -top-3 flex flex-col gap-0.5" aria-hidden>
-              <span className="h-0.5 w-4 rotate-[-18deg] rounded-full bg-accent" />
-              <span className="h-0.5 w-3 rotate-[-8deg] rounded-full bg-accent" />
-              <span className="h-0.5 w-5 rotate-[10deg] rounded-full bg-accent" />
-            </span>
-          </div>
-
           <h1 className="max-w-[18ch] font-display text-4xl font-semibold leading-none tracking-[-1.4px] text-dark sm:text-6xl lg:text-[88px]">
             I&apos;m <span className="text-accent">Kaushal</span>,
             <br />
@@ -39,7 +28,8 @@ export function Hero() {
           >
             <Quote className="size-9 text-muted" strokeWidth={1.5} fill="currentColor" />
             <p className="font-body text-lg font-medium leading-snug tracking-[-0.3px] text-ink">
-              2+ years building production apps for iOS and Android. Consumer, D2C, and AI-powered.
+              Building and shipping production mobile apps for iOS and Android, across consumer,
+              commerce, sports, and AI products.
             </p>
           </motion.aside>
 

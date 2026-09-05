@@ -46,6 +46,8 @@ export interface Project {
   id: string
   name: string
   description: string
+  /** Short ownership / employment context shown on the card */
+  context?: string
   stack: StackItem[]
   integrations?: Integration[]
   live?: string
@@ -53,7 +55,7 @@ export interface Project {
   stores?: StoreLink[]
   category: string
   logo?: string
-  /** Wide wordmarks (e.g. Jockey, OWND) — use contain + wider frame, not square crop */
+  /** Wide wordmarks (e.g. Jockey, OWND) - use contain + wider frame, not square crop */
   logoWide?: boolean
 }
 
@@ -62,8 +64,9 @@ export const projectsData: Project[] = [
   {
     id: 'jockey',
     name: 'Jockey',
+    context: 'Seventh Triangle · Full-time',
     description:
-      'Mobile commerce app. Built digital wallet end-to-end, shipped Disney/Marvel campaign flows in a Shopify + AppMaker ecosystem. In-app review pushed store rating from 3.8 to 4.8.',
+      'Mobile commerce on the App Store and Play Store. Digital wallet, Disney/Marvel campaign flows, and an in-app review path that moved store rating from 3.8 to 4.8.',
     stack: [
       { name: 'React Native', logo: reactLogo },
       { name: 'TypeScript',   logo: typescriptLogo },
@@ -87,7 +90,7 @@ export const projectsData: Project[] = [
     id: 'kash',
     name: 'Kash',
     description:
-      'Money companion app on the App Store and Google Play. Built solo: Quick Log parses plain-language entries, local-first SQLite model, multi-account, multi-currency, optional cloud backup.',
+      'Money companion on the App Store and Google Play. Solo product: Quick Log for plain-language entries, local-first SQLite, multi-account, multi-currency, optional cloud backup.',
     stack: [
       { name: 'React Native', logo: reactLogo },
       { name: 'SQLite',       logo: sqliteLogo },
@@ -105,15 +108,16 @@ export const projectsData: Project[] = [
       { platform: 'ios',     url: 'https://apps.apple.com/us/app/kash-your-money-companion/id6774987648' },
       { platform: 'android', url: 'https://play.google.com/store/apps/details?id=com.kashfinance.app' },
     ],
-    category: 'Indie',
+    category: 'Finance',
     logo: kashLogo,
   },
 
   {
     id: 'ownd',
     name: 'OWND!',
+    context: 'Seventh Triangle · Full-time',
     description:
-      'Gen Z fashion commerce platform by Aditya Birla Group. Building core commerce journeys, launch-critical integrations, and Juspay payment flows.',
+      'Aditya Birla Gen Z fashion commerce (pre-launch). Core commerce journeys and Juspay payment integration for a large consumer platform.',
     stack: [
       { name: 'React Native', logo: reactLogo },
       { name: 'TypeScript',   logo: typescriptLogo },
@@ -133,8 +137,9 @@ export const projectsData: Project[] = [
   {
     id: 'house-ai',
     name: 'House AI',
+    context: 'Addicting Elements · Freelance',
     description:
-      'AI interior and exterior design app with 20K+ downloads and 4.5 rating. Built AI image transformation flows using Gemini Flash and Vertex AI with subscription gating.',
+      'AI interior and exterior design app with 20K+ downloads and 4.5 rating. Gemini Flash / Vertex image flows with subscription gating on iOS and Android.',
     stack: [
       { name: 'React Native', logo: reactLogo },
       { name: 'TypeScript',   logo: typescriptLogo },
@@ -157,8 +162,9 @@ export const projectsData: Project[] = [
   {
     id: 'khelcoach',
     name: 'KhelCoach',
+    context: 'Seventh Triangle · Full-time',
     description:
-      '3 role-based apps (athlete, coach, academy) with shared design system. Automated releases with Fastlane, OTA updates via CodePush, integrated payments and booking flows.',
+      'Three live role-based apps (athlete, coach, academy) with shared UI. Fastlane releases, CodePush OTA, payments and booking on the stores.',
     stack: [
       { name: 'React Native', logo: reactLogo },
       { name: 'TypeScript',   logo: typescriptLogo },
@@ -185,10 +191,11 @@ export const projectsData: Project[] = [
   {
     id: 'picklebay',
     name: 'Picklebay',
+    context: 'Seventh Triangle · Full-time',
     description:
-      'Pickleball sports-tech platform for India: discover courts, matchmaking, bookings, tournaments, and community. Built WebToNative app with custom JS bridges; instrumented Firebase Analytics and Crashlytics.',
+      'Pickleball platform for India: courts, matchmaking, bookings, tournaments, community. WebToNative shell with custom JS bridges; live on App Store and Play Store.',
     stack: [
-      { name: 'React Native', logo: reactLogo },
+      { name: 'WebToNative' },
       { name: 'JavaScript' },
     ],
     integrations: [

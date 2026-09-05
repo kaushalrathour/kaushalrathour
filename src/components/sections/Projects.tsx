@@ -155,7 +155,7 @@ export function Projects() {
                   </div>
 
                   <div className="relative flex h-full min-h-0 flex-col p-6 sm:p-10 lg:py-12 lg:pr-12">
-                    <div className="flex h-14 shrink-0 items-center justify-between gap-4 sm:h-16">
+                    <div className="flex min-h-14 shrink-0 items-start justify-between gap-4 sm:min-h-16">
                       <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                         {active.logo ? (
                           <div className="flex size-14 shrink-0 items-center justify-center lg:hidden">
@@ -173,9 +173,16 @@ export function Projects() {
                         ) : (
                           <div className="size-14 shrink-0 lg:hidden" aria-hidden />
                         )}
-                        <h3 className="truncate font-display text-3xl font-bold tracking-[-0.72px] text-[#fffaf5] sm:text-4xl lg:text-5xl">
-                          {active.name}
-                        </h3>
+                        <div className="min-w-0">
+                          <h3 className="truncate font-display text-3xl font-bold tracking-[-0.72px] text-[#fffaf5] sm:text-4xl lg:text-5xl">
+                            {active.name}
+                          </h3>
+                          {active.context ? (
+                            <p className="mt-1 truncate font-body text-xs tracking-[-0.2px] text-white/55 sm:text-sm">
+                              {active.context}
+                            </p>
+                          ) : null}
+                        </div>
                       </div>
                       <div className="flex size-12 shrink-0 items-center justify-center sm:size-14">
                         {externalUrl ? (
