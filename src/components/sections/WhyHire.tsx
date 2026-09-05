@@ -1,6 +1,11 @@
 import { motion } from 'motion/react'
 import heroImg from '@/assets/kaushal-rathour-react-native-engineer.png'
-import { projectsData } from '@/data/projectsData'
+
+const POINTS = [
+  'I make the technical decisions, not just implement the ticket, and I\'m comfortable being wrong and fixing it.',
+  'Before something ships, I think about what breaks in production and plan for it, not after.',
+  'Mobile is my main lane, but I\'ve built backends too - MERN for Kash, FastAPI for House AI - when the product needed it.',
+]
 
 export function WhyHire() {
   return (
@@ -24,39 +29,24 @@ export function WhyHire() {
 
           <div className="w-full max-w-xl">
             <h2 className="font-display text-4xl font-semibold tracking-[-0.96px] text-ink sm:text-5xl lg:text-[64px]">
-              Why <span className="text-accent">Hire me</span>?
+              How I <span className="text-accent">work</span>
             </h2>
             <p className="mt-6 max-w-md font-body text-base leading-relaxed tracking-[-0.3px] text-muted sm:text-xl">
-              React Native engineer. I build and ship apps people use: commerce, AI tools, and my
-              own products on the App Store and Play Store.
+              I don&apos;t wait around for instructions. Most of what I&apos;ve shipped, I
+              owned end to end, including the calls on how to build it.
             </p>
 
-            <div className="mt-10 grid grid-cols-3 gap-4 sm:gap-6">
-              <div>
-                <p className="font-display text-3xl font-medium tracking-[-0.54px] text-ink-strong sm:text-4xl">
-                  {projectsData.length}+
-                </p>
-                <p className="mt-2 font-body text-sm tracking-[-0.3px] text-[#667085] sm:text-lg">
-                  Projects Shipped
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-medium tracking-[-0.54px] text-ink-strong sm:text-4xl">
-                  8
-                </p>
-                <p className="mt-2 font-body text-sm tracking-[-0.3px] text-[#667085] sm:text-lg">
-                  Apps
-                </p>
-              </div>
-              <div>
-                <p className="font-display text-3xl font-medium tracking-[-0.54px] text-ink-strong sm:text-4xl">
-                  2+
-                </p>
-                <p className="mt-2 font-body text-sm tracking-[-0.3px] text-[#667085] sm:text-lg">
-                  Years Experience
-                </p>
-              </div>
-            </div>
+            <ul className="mt-8 flex max-w-md flex-col gap-3">
+              {POINTS.map((point) => (
+                <li
+                  key={point}
+                  className="flex gap-2.5 font-body text-base leading-relaxed tracking-[-0.3px] text-ink sm:text-lg"
+                >
+                  <span className="mt-[9px] size-1.5 shrink-0 rounded-full bg-accent" />
+                  {point}
+                </li>
+              ))}
+            </ul>
 
             <a
               href="#contact"
